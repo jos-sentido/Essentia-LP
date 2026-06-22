@@ -1,0 +1,7 @@
+node_modules/
+.vercel
+.DS_Store
+*.log
+landing/_preview_server.cjs
+.env
+.env.local
