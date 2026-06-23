@@ -3,9 +3,11 @@
   'use strict';
   document.documentElement.classList.add('js');
 
-  // ---- A/B variant ----
-  var params = new URLSearchParams(location.search);
-  var variant = (params.get('v') || 'a').toLowerCase() === 'b' ? 'b' : 'a';
+  // ---- A/B variant (por ruta /a · /b o por ?v=a|b) ----
+  var qv = (new URLSearchParams(location.search).get('v') || '').toLowerCase();
+  var path = location.pathname.toLowerCase().replace(/\/+$/, '');
+  var isB = qv === 'b' || path === '/b' || path.endsWith('/b');
+  var variant = isB ? 'b' : 'a';
   document.body.dataset.variant = variant;
 
   // Mostrar/ocultar bloques data-ab
