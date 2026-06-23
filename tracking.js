@@ -1,16 +1,18 @@
 /* ===== Essentia Country — tracking (LP + relay) =====
    Resuelve el problema #1 del proyecto: tracking de conversión roto.
-   PLACEHOLDERS a completar en Fase 2 (implementación):
-     META_PIXEL_ID   → ‹‹META_PIXEL_ID››
-     GOOGLE_ADS_ID   → ‹‹GOOGLE_ADS_ID››   (formato AW-XXXXXXXXX)
-     CONV_LABEL      → ‹‹CONV_LABEL››       (label de la conversión "Sitio web")
-   Mientras estén como placeholder, los disparos quedan en modo "dry-run" (solo console). */
+   IDs PÚBLICOS (van en el código; de todos modos viajan al navegador):
+     META_PIXEL_ID  → activo
+     GOOGLE_ADS_ID  → ‹‹GOOGLE_ADS_ID›› (formato AW-XXXXXXXXX) — pendiente crear conversión
+     CONV_LABEL     → ‹‹CONV_LABEL››     (label de la conversión "Sitio web")
+   Pixel y Google Ads se disparan de forma INDEPENDIENTE: si uno aún es placeholder,
+   el otro igual funciona. El token CAPI (secreto) vive en el relay (env var). */
 (function () {
   'use strict';
-  var META_PIXEL_ID = '‹‹META_PIXEL_ID››';
+  var META_PIXEL_ID = '1342927834480411';
   var GOOGLE_ADS_ID = '‹‹GOOGLE_ADS_ID››';
   var CONV_LABEL    = '‹‹CONV_LABEL››';
-  var ready = META_PIXEL_ID.indexOf('‹‹') === -1; // true sólo cuando se reemplacen
+  var metaReady = META_PIXEL_ID.indexOf('‹‹') === -1;
+  var adsReady  = GOOGLE_ADS_ID.indexOf('‹‹') === -1 && CONV_LABEL.indexOf('‹‹') === -1;
 
   // --- Captura de tracking de la URL/cookies ---
   function getParam(n){ return new URLSearchParams(location.search).get(n) || ''; }
@@ -32,7 +34,7 @@
   }
 
   // --- Meta Pixel (PageView) ---
-  if (ready) {
+  if (metaReady) {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
       n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
@@ -40,8 +42,10 @@
       (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     window.fbq('init', META_PIXEL_ID);
     window.fbq('track', 'PageView');
+  }
 
-    // --- Google Ads gtag ---
+  // --- Google Ads gtag ---
+  if (adsReady) {
     var g=document.createElement('script');g.async=true;
     g.src='https://www.googletagmanager.com/gtag/js?id='+GOOGLE_ADS_ID;
     document.head.appendChild(g);
@@ -49,15 +53,21 @@
     window.gtag=function(){window.dataLayer.push(arguments);};
     window.gtag('js', new Date());
     window.gtag('config', GOOGLE_ADS_ID);
-  } else {
-    console.info('[Essentia tracking] DRY-RUN — completar IDs de Pixel/Google Ads en Fase 2.');
+  }
+
+  if (!metaReady && !adsReady) {
+    console.info('[Essentia tracking] DRY-RUN — sin IDs configurados.');
   }
 
   // --- Disparo de conversión Lead (form submit) ---
   function fireLead(payload){
-    if (!ready) { console.info('[Essentia tracking] Lead (dry-run):', payload.event_id); return; }
-    try { window.fbq('track','Lead',{content_name:'LP '+payload.variante},{eventID:payload.event_id}); } catch(e){}
-    try { window.gtag('event','conversion',{send_to:GOOGLE_ADS_ID+'/'+CONV_LABEL}); } catch(e){}
+    if (metaReady) {
+      try { window.fbq('track','Lead',{content_name:'LP '+payload.variante},{eventID:payload.event_id}); } catch(e){}
+    }
+    if (adsReady) {
+      try { window.gtag('event','conversion',{send_to:GOOGLE_ADS_ID+'/'+CONV_LABEL}); } catch(e){}
+    }
+    if (!metaReady && !adsReady) { console.info('[Essentia tracking] Lead (dry-run):', payload.event_id); }
   }
 
   window.EssentiaTracking = { context: context, fireLead: fireLead, eventId: eventId };
