@@ -15,13 +15,16 @@
     el.hidden = el.getAttribute('data-ab') !== variant;
   });
 
-  // ---- Nav stuck ----
+  // ---- Nav y sticky CTA: aparecen al hacer scroll ----
   var nav = document.getElementById('nav');
   var onScroll = function () {
-    if (window.scrollY > 40) nav.classList.add('is-stuck');
-    else nav.classList.remove('is-stuck');
+    var y = window.scrollY;
+    nav.classList.toggle('is-stuck', y > 40);
+    // sticky CTA solo después de pasar el hero (evita encimarse en móvil)
+    document.body.classList.toggle('past-hero', y > window.innerHeight * 0.7);
   };
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
   onScroll();
 
   // ---- Reveal on scroll ----
