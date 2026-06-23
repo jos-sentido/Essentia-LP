@@ -1,7 +1,7 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/a", "destination": "/lp.html" },
-    { "source": "/b", "destination": "/lp.html" }
+    { "source": "/a", "destination": "/lp" },
+    { "source": "/b", "destination": "/lp" }
   ]
 }
