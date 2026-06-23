@@ -48,12 +48,69 @@
 
     <div class="hero__cta">
       <a href="#form" class="btn btn--primary" data-cta="hero" data-ab="a">Agenda tu visita</a>
-      <a href="#form" class="btn btn--primary" data-cta="hero" data-ab="b" hidden>Calcular mi inversión</a>
-      <a href="#tipologias" class="btn btn--outline">Ver departamentos</a>
+      <a href="#calculadora" class="btn btn--primary" data-cta="hero" data-ab="b" hidden>Calcular mi inversión</a>
+      <a href="#tipologias" class="btn btn--outline" data-ab="a">Ver departamentos</a>
+      <a href="#caso" class="btn btn--outline" data-ab="b" hidden>Ver el rendimiento</a>
     </div>
     <p class="hero__micro">Te responde un asesor, no un bot. Sin compromiso.</p>
   </div>
   <a href="#ubicacion" class="hero__scroll" aria-label="Bajar">▾</a>
+</section>
+
+<!-- ░░ CASO DE INVERSIÓN (solo Variante B) ░░ -->
+<section class="section section--cream only-b" id="caso">
+  <div class="wrap">
+    <p class="kicker">El caso de inversión</p>
+    <h2 class="h2">Los números, antes que las palabras.</h2>
+    <p class="lead">Country Club no promete plusvalía: ya la demostró. Esto es lo que respalda tu inversión.</p>
+
+    <div class="caso__stats">
+      <div class="caso__stat"><span class="caso__n">8–15%</span><span class="caso__l">Plusvalía anual estimada en corredores premium de la ZMG</span></div>
+      <div class="caso__stat"><span class="caso__n">~$250<small>/m²·mes</small></span><span class="caso__l">Renta promedio en la zona Country Club</span></div>
+      <div class="caso__stat"><span class="caso__n">~3.9%</span><span class="caso__l">Rendimiento bruto anual solo por renta</span></div>
+    </div>
+
+    <div class="caso__return">
+      <p class="caso__return-title">Retorno total potencial</p>
+      <div class="caso__bar">
+        <span class="caso__seg caso__seg--renta" style="flex:3.9"><em>Renta</em><b>~3.9%</b></span>
+        <span class="caso__seg caso__seg--plus" style="flex:11"><em>Plusvalía</em><b>8–15%</b></span>
+      </div>
+      <p class="caso__total">= <strong>12–19% anual</strong> combinando renta y plusvalía estimada</p>
+    </div>
+    <p class="disclaimer">Cifras estimadas con datos públicos de mercado (jun 2026). No constituyen garantía de rendimiento.</p>
+  </div>
+</section>
+
+<!-- ░░ CALCULADORA (solo Variante B) ░░ -->
+<section class="section section--dark only-b" id="calculadora">
+  <div class="wrap">
+    <p class="kicker kicker--light">Calculadora</p>
+    <h2 class="h2 h2--light">Haz tus números.</h2>
+    <p class="lead lead--light">Elige una tipología y mira cómo se estructura tu inversión.</p>
+
+    <div class="calc">
+      <div class="calc__tabs" id="calc-tabs" role="tablist">
+        <button class="calc__tab is-sel" data-unit="0" role="tab">1 recámara</button>
+        <button class="calc__tab" data-unit="1" role="tab">2 recámaras</button>
+        <button class="calc__tab" data-unit="2" role="tab">2 rec · amplio</button>
+        <button class="calc__tab" data-unit="3" role="tab">3 recámaras</button>
+      </div>
+
+      <div class="calc__grid">
+        <div class="calc__row calc__row--head">
+          <span class="calc__k">Precio desde</span><span class="calc__v" id="calc-precio">—</span>
+        </div>
+        <div class="calc__row"><span class="calc__k">Enganche <small>30%</small></span><span class="calc__v" id="calc-enganche">—</span></div>
+        <div class="calc__row"><span class="calc__k">Mensualidad <small>40% en 18 MSI</small></span><span class="calc__v" id="calc-msi">—</span></div>
+        <div class="calc__row"><span class="calc__k">Contra entrega <small>30%</small></span><span class="calc__v" id="calc-entrega">—</span></div>
+        <div class="calc__row calc__row--accent"><span class="calc__k">Renta estimada <small>/mes</small></span><span class="calc__v" id="calc-renta">—</span></div>
+        <div class="calc__row calc__row--accent"><span class="calc__k">Valor proyectado <small>a 5 años · 10%/año</small></span><span class="calc__v" id="calc-valor">—</span></div>
+      </div>
+      <a href="#form" class="btn btn--primary calc__cta" data-cta="calc">Quiero el desglose con un asesor</a>
+      <p class="disclaimer disclaimer--light">Estimaciones con base en precios "desde" y renta de zona ($250/m²·mes). Esquemas de crédito hipotecario: ‹‹CREDITO››. No es una oferta vinculante.</p>
+    </div>
+  </div>
 </section>
 
 <!-- ░░ UBICACIÓN ░░ -->
@@ -61,8 +118,9 @@
   <div class="wrap">
     <p class="kicker">Ubicación</p>
     <h2 class="h2" data-ab="a">No vives lejos.<br>Vives en el centro de todo.</h2>
-    <h2 class="h2" data-ab="b" hidden>La zona no promete plusvalía.<br>Ya la demostró.</h2>
-    <p class="lead">Country Club es de las pocas direcciones en Guadalajara que no necesita presentación: trayectoria, plusvalía y vida a un paso de la Zona Financiera.</p>
+    <h2 class="h2" data-ab="b" hidden>A minutos de todo lo<br>que mueve Guadalajara.</h2>
+    <p class="lead" data-ab="a">Country Club es de las pocas direcciones en Guadalajara que no necesita presentación: trayectoria, plusvalía y vida a un paso de la Zona Financiera.</p>
+    <p class="lead" data-ab="b" hidden>La ubicación es el primer driver de plusvalía. Essentia está en el corazón del Country, a un paso de la Zona Financiera y los corredores de mayor demanda.</p>
 
     <ul class="poi">
       <li><svg viewBox="0 0 24 24" class="ic"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>Guadalajara Country Club — a la vuelta</li>
@@ -72,11 +130,10 @@
       <li><svg viewBox="0 0 24 24" class="ic"><path d="M12 3c4 4 6 7 6 10a6 6 0 0 1-12 0c0-3 2-6 6-10Z"/></svg>Bosque Colomos / Club Atlas Colomos — áreas verdes</li>
     </ul>
 
-    <div class="stats">
+    <div class="stats" data-ab="a">
       <div class="stat"><span class="stat__n">8–15%</span><span class="stat__l">Plusvalía anual estimada en corredores premium de la ZMG</span></div>
       <div class="stat"><span class="stat__n">~$250<small>/m²·mes</small></span><span class="stat__l">Renta promedio en la zona Country Club</span></div>
-      <div class="stat" data-ab="a"><span class="stat__n">Top</span><span class="stat__l">Colonia de mayor demanda sostenida en Guadalajara</span></div>
-      <div class="stat" data-ab="b" hidden><span class="stat__n">~3.9%</span><span class="stat__l">Rendimiento bruto por renta + plusvalía</span></div>
+      <div class="stat"><span class="stat__n">Top</span><span class="stat__l">Colonia de mayor demanda sostenida en Guadalajara</span></div>
     </div>
     <p class="disclaimer" data-ab="b" hidden>Cifras estimadas con datos públicos de mercado. No constituyen garantía de rendimiento.</p>
   </div>
@@ -101,8 +158,10 @@
 <section class="section section--light" id="amenidades">
   <div class="wrap">
     <p class="kicker">Amenidades</p>
-    <h2 class="h2">Todo lo que importa, dentro.</h2>
-    <p class="lead">Pensadas como parte de la vida diaria, no como extras.</p>
+    <h2 class="h2" data-ab="a">Todo lo que importa, dentro.</h2>
+    <h2 class="h2" data-ab="b" hidden>Amenidades que sostienen el valor.</h2>
+    <p class="lead" data-ab="a">Pensadas como parte de la vida diaria, no como extras.</p>
+    <p class="lead" data-ab="b" hidden>Un edificio con estas amenidades renta más rápido, a mejor precio y mantiene su demanda en el tiempo.</p>
     <div class="amen">
       <article class="amen__card">
         <img src="assets/img/amenity-gym.webp" alt="Gimnasio equipado de Essentia Country" loading="lazy" />
@@ -187,14 +246,17 @@
   <div class="wrap dev">
     <div class="dev__copy">
       <p class="kicker">Desarrollador</p>
-      <h2 class="h2">Península Lifestyle Properties.</h2>
-      <p class="lead">Detrás de Essentia está Península, firma con desarrollos residenciales y de lujo en todo México.</p>
+      <h2 class="h2" data-ab="a">Península Lifestyle Properties.</h2>
+      <h2 class="h2" data-ab="b" hidden>Quien construye, también respalda.</h2>
+      <p class="lead" data-ab="a">Detrás de Essentia está Península, firma con desarrollos residenciales y de lujo en todo México.</p>
+      <p class="lead" data-ab="b" hidden>Tu inversión está respaldada por Península, firma con obra entregada en todo México — no un proyecto de un solo desarrollo.</p>
       <ul class="dev__list">
         <li><strong>Amancay</strong> — Nuevo Vallarta, Nayarit</li>
         <li><strong>Distrito Chapultepec</strong> — Americana, Guadalajara</li>
         <li><strong>Ocean One</strong> — Punta Diamante, Acapulco</li>
       </ul>
       <p class="dev__track">‹‹TRACK_RECORD››</p>
+      <p class="dev__track" data-ab="b" hidden>Esquemas de crédito y financiamiento disponibles: ‹‹CREDITO››</p>
     </div>
     <div class="dev__media">
       <img src="assets/img/gym-wide.webp" alt="Gimnasio Technogym terminado en Essentia Country" loading="lazy" />

@@ -38,6 +38,39 @@
     reveals.forEach(function (el) { el.classList.add('in'); });
   }
 
+  // ---- Calculadora de inversión (Variante B) ----
+  (function () {
+    var tabs = document.getElementById('calc-tabs');
+    if (!tabs) return;
+    var UNITS = [
+      { name: '1 recámara', m2: 83.81, price: 6.4 },
+      { name: '2 recámaras', m2: 85.23, price: 7.3 },
+      { name: '2 recámaras · amplio', m2: 130.89, price: 7.3 },
+      { name: '3 recámaras', m2: 152.62, price: 10.2 }
+    ];
+    var RENTA_M2 = 250, PLUSV = 0.10, ENG = 0.30, MSI_PCT = 0.40, MSI_N = 18, ENTREGA = 0.30;
+    var $ = function (id) { return document.getElementById(id); };
+    function pesos(v) { return '$' + Math.round(v).toLocaleString('es-MX'); }
+    function mdp(v) { return '$' + (Math.round(v * 100) / 100).toString() + ' MDP'; }
+    function setUnit(i) {
+      var u = UNITS[i], P = u.price; // MDP
+      $('calc-precio').textContent = mdp(P);
+      $('calc-enganche').textContent = mdp(P * ENG);
+      $('calc-msi').textContent = pesos(P * MSI_PCT / MSI_N * 1e6) + '/mes';
+      $('calc-entrega').textContent = mdp(P * ENTREGA);
+      $('calc-renta').textContent = pesos(u.m2 * RENTA_M2) + '/mes';
+      $('calc-valor').textContent = mdp(P * Math.pow(1 + PLUSV, 5));
+      tabs.querySelectorAll('.calc__tab').forEach(function (t, k) {
+        t.classList.toggle('is-sel', k === i);
+      });
+    }
+    tabs.addEventListener('click', function (e) {
+      var t = e.target.closest('.calc__tab');
+      if (t) setUnit(parseInt(t.dataset.unit, 10));
+    });
+    setUnit(0);
+  })();
+
   // ---- Formulario multi-paso ----
   var form = document.getElementById('lead-form');
   if (!form) return;

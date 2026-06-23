@@ -221,6 +221,47 @@ h1,h2,h3,.eyebrow,.kicker{font-family:'Cinzel',serif}
 }
 @media(max-width:760px){.sticky-cta{display:flex}.footer{padding-bottom:90px}}
 
+/* ===== Variante: secciones solo-B ===== */
+body[data-variant="a"] .only-b{display:none!important}
+.disclaimer--light{color:#bdb3a4}
+
+/* Caso de inversión (B) */
+.caso__stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:44px}
+.caso__stat{background:#fff;border:1px solid var(--linea);border-radius:var(--radius);padding:26px 24px}
+.caso__n{display:block;font-family:'Cinzel',serif;font-size:2.3rem;font-weight:600;color:var(--negro);line-height:1}
+.caso__n small{font-size:.82rem;font-weight:400;color:var(--texto-2)}
+.caso__l{display:block;font-size:.92rem;color:var(--texto-2);margin-top:10px;line-height:1.45}
+.caso__return{margin-top:40px;background:#fff;border:1px solid var(--linea);border-radius:var(--radius);padding:30px clamp(22px,4vw,36px)}
+.caso__return-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--negro);margin-bottom:18px}
+.caso__bar{display:flex;gap:6px;height:62px;border-radius:var(--radius);overflow:hidden}
+.caso__seg{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:0 18px;color:#fff;min-width:0}
+.caso__seg em{font-style:normal;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;opacity:.92}
+.caso__seg b{font-family:'Cinzel',serif;font-size:1.15rem;font-weight:600;white-space:nowrap}
+.caso__seg--renta{background:var(--taupe)}
+.caso__seg--plus{background:var(--olivo)}
+.caso__total{margin-top:16px;font-size:1.05rem;color:var(--texto)}
+.caso__total strong{font-family:'Cinzel',serif;color:var(--olivo-d);font-size:1.15rem}
+
+/* Calculadora (B) */
+.calc{margin-top:40px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:8px;padding:clamp(22px,4vw,38px);max-width:680px}
+.calc__tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.calc__tab{flex:1 1 auto;min-width:120px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.22);color:#ece5db;
+  padding:13px 14px;border-radius:var(--radius);font-family:'Josefin Sans',sans-serif;font-size:.92rem;cursor:pointer;
+  transition:all .2s var(--ease);min-height:46px;touch-action:manipulation}
+.calc__tab:hover{border-color:var(--olivo)}
+.calc__tab.is-sel{background:var(--olivo);border-color:var(--olivo);color:#fff;font-weight:500}
+.calc__tab:focus-visible{outline:3px solid #cdbfa6;outline-offset:2px}
+.calc__grid{display:grid;gap:1px;background:rgba(255,255,255,.12);border-radius:var(--radius);overflow:hidden}
+.calc__row{display:flex;justify-content:space-between;align-items:center;gap:16px;background:#241e1b;padding:16px 20px}
+.calc__row--head{background:#2c2522}
+.calc__row--accent{background:#2a2a1f}
+.calc__k{font-size:.94rem;color:#cfc6ba}
+.calc__k small{display:block;font-size:.74rem;color:#9d9488;margin-top:2px;letter-spacing:.02em}
+.calc__v{font-family:'Cinzel',serif;font-size:1.22rem;font-weight:600;color:#fff;text-align:right;white-space:nowrap}
+.calc__row--accent .calc__v{color:#cdbf9c}
+.calc__cta{width:100%;margin-top:24px}
+@media(max-width:560px){.calc__v{font-size:1.05rem}.caso__seg b{font-size:1rem}}
+
 /* reveal */
 .js [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .js [data-reveal].in{opacity:1;transform:none}
