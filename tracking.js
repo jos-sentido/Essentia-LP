@@ -2,15 +2,15 @@
    Resuelve el problema #1 del proyecto: tracking de conversión roto.
    IDs PÚBLICOS (van en el código; de todos modos viajan al navegador):
      META_PIXEL_ID  → activo
-     GOOGLE_ADS_ID  → ‹‹GOOGLE_ADS_ID›› (formato AW-XXXXXXXXX) — pendiente crear conversión
+     GOOGLE_ADS_ID  → AW-18180488039 (activo)
      CONV_LABEL     → ‹‹CONV_LABEL››     (label de la conversión "Sitio web")
    Pixel y Google Ads se disparan de forma INDEPENDIENTE: si uno aún es placeholder,
    el otro igual funciona. El token CAPI (secreto) vive en el relay (env var). */
 (function () {
   'use strict';
   var META_PIXEL_ID = '1342927834480411';
-  var GOOGLE_ADS_ID = '‹‹GOOGLE_ADS_ID››';
-  var CONV_LABEL    = '‹‹CONV_LABEL››';
+  var GOOGLE_ADS_ID = 'AW-18180488039';
+  var CONV_LABEL    = 'uTldCL7TvsQcEOf2kN1D';
   var metaReady = META_PIXEL_ID.indexOf('‹‹') === -1;
   var adsReady  = GOOGLE_ADS_ID.indexOf('‹‹') === -1 && CONV_LABEL.indexOf('‹‹') === -1;
 
