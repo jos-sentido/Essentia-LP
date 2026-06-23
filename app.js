@@ -83,6 +83,20 @@
 
   function showErr(msg) { errEl.textContent = msg; errEl.hidden = false; }
 
+  // Pre-selecciona la tipología al dar clic en "Solicitar información" de una card
+  document.querySelectorAll('[data-cta="typo"][data-tipo]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var tipo = a.getAttribute('data-tipo');
+      data.producto_interes = tipo;
+      var group = form.querySelector('.opts[data-field="producto_interes"]');
+      if (group) {
+        group.querySelectorAll('.opt').forEach(function (o) {
+          o.classList.toggle('is-sel', o.dataset.value === tipo);
+        });
+      }
+    });
+  });
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var nombre = form.nombre.value.trim();
