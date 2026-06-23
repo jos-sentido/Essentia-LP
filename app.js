@@ -3,6 +3,13 @@
   'use strict';
   document.documentElement.classList.add('js');
 
+  // Red de seguridad: oculta cualquier elemento con placeholder sin llenar (‹‹...››)
+  document.querySelectorAll('body *').forEach(function (el) {
+    if (el.children.length === 0 && /‹‹.*?››/.test(el.textContent)) {
+      el.style.display = 'none';
+    }
+  });
+
   // ---- A/B variant (por ruta /a · /b o por ?v=a|b) ----
   var qv = (new URLSearchParams(location.search).get('v') || '').toLowerCase();
   var path = location.pathname.toLowerCase().replace(/\/+$/, '');
