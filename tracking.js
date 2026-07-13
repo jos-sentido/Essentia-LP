@@ -26,6 +26,9 @@
       utm_source: getParam('utm_source'), utm_medium: getParam('utm_medium'),
       utm_campaign: getParam('utm_campaign'), utm_content: getParam('utm_content'),
       utm_term: getParam('utm_term'),
+      // Atribución del anuncio: los inyecta la plataforma vía parámetros de URL (Meta/Google), no la LP.
+      ad_id: getParam('ad_id'), adset_id: getParam('adset_id'),
+      campaign_id: getParam('campaign_id'), adgroup_id: getParam('adgroup_id'),
       gclid: getParam('gclid'), fbclid: getParam('fbclid'),
       fbp: getCookie('_fbp'), fbc: getCookie('_fbc'),
       referrer: document.referrer, landing_url: location.href,

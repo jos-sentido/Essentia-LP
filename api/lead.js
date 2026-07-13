@@ -7,9 +7,52 @@
      GHL_TOKEN, GHL_LOCATION_ID           — PIT token REST (header Version: 2021-07-28)
      SHEET_WEBHOOK_URL                    — Apps Script Web App /exec
      META_PIXEL_ID, META_CAPI_TOKEN       — Conversions API
+     ZOHO_WEBHOOK_URL                     — webhook del CRM del cliente (Zoho Flow → Create Lead). Inerte si vacía.
 */
 const crypto = require('crypto');
 const sha256 = (v) => v ? crypto.createHash('sha256').update(String(v).trim().toLowerCase()).digest('hex') : undefined;
+
+// Reintento con backoff (400ms, 800ms, 1200ms). Solo lo usa el destino Zoho.
+async function withRetry(fn, n = 3) {
+  let last;
+  for (let i = 0; i < n; i++) {
+    try { return await fn(); } catch (e) { last = e; await new Promise((r) => setTimeout(r, 400 * (i + 1))); }
+  }
+  throw last;
+}
+
+/* ---- 4) Zoho CRM (vía webhook — Zoho Flow) ----
+   NO tocamos la API de Zoho ni pasamos por GHL. PLP expone un webhook (Zoho Flow →
+   Create Lead) y mapea los campos de su lado. Aquí solo mandamos un JSON plano y
+   bien nombrado para que su mapeo sea directo. La URL vive en env (ZOHO_WEBHOOK_URL);
+   si falta, retorna 'skip' y el destino queda inerte (no rompe nada). */
+async function toZoho(lead) {
+  const url = process.env.ZOHO_WEBHOOK_URL;
+  if (!url) return 'skip';
+  const body = {
+    // contacto
+    nombre: lead.nombre, email: lead.email, whatsapp: lead.whatsapp,
+    // versión de LP (A/B)
+    version_lp: lead.variante,
+    // respuestas del form conversacional (llaves reales de Essentia)
+    objetivo: lead.objetivo, producto_interes: lead.producto_interes,
+    timing: lead.timing, monto: lead.monto,
+    // atribución del anuncio (ad_id/adset_id/campaign_id/adgroup_id los inyecta la plataforma vía URL)
+    ad_id: lead.ad_id, ad_name: lead.utm_content, adset_id: lead.adset_id,
+    campaign: lead.utm_campaign, campaign_id: lead.campaign_id, adgroup_id: lead.adgroup_id,
+    utm_source: lead.utm_source, fbclid: lead.fbclid, gclid: lead.gclid,
+    // fecha de conversión (momento del submit) + origen
+    fecha_conversion: lead.ts || lead.timestamp, landing_url: lead.landing_url
+  };
+  return withRetry(async () => {
+    const r = await fetch(url, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    if (!r.ok) throw new Error('zoho ' + r.status);
+    return 'ok';
+  });
+}
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -74,6 +117,9 @@ module.exports = async (req, res) => {
       })
     }).then(() => ['capi', 'ok']).catch((e) => ['capi', 'err:' + e.message]));
   }
+
+  // --- 4) Zoho CRM (webhook Zoho Flow) — self-gated por ZOHO_WEBHOOK_URL: inerte hasta cargarla ---
+  tasks.push(toZoho(lead).then((r) => ['zoho', r]).catch((e) => ['zoho', 'err:' + e.message]));
 
   const results = await Promise.allSettled(tasks);
   const summary = results.map((r) => r.value || ['?', 'rejected']);
