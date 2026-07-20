@@ -53,13 +53,20 @@ section{padding:72px 0}
 .sec-head h2{font-size:clamp(1.4rem,3vw,2rem)}
 .sec-head p{margin-top:14px}
 
-/* mapa de públicos */
+/* mapa de públicos (selector de guión) */
 .mapa{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-.mapa a{display:block;background:var(--negro);color:#fff;text-decoration:none;border-radius:var(--radius);padding:26px 22px;transition:background .25s}
+.mapa a{position:relative;display:block;background:var(--negro);color:#fff;text-decoration:none;border-radius:var(--radius);padding:26px 22px;transition:background .25s,box-shadow .25s;border:1px solid transparent}
 .mapa a:hover{background:var(--taupe-d)}
+.mapa a.active{background:var(--taupe-d);border-color:var(--olivo);box-shadow:0 0 0 1px var(--olivo)}
+.mapa a.active::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--olivo);border-radius:var(--radius) var(--radius) 0 0}
+.mapa a.active .num::after{content:"· viendo ahora";color:#cfc49f;letter-spacing:.08em;margin-left:6px;text-transform:none}
 .mapa .num{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.2em;color:#c9bfa9;display:block;margin-bottom:10px}
 .mapa h3{color:#fff;font-size:1.05rem;margin-bottom:8px}
 .mapa p{font-size:.85rem;color:#d8d2c6}
+.tabs-hint{margin-top:18px;font-size:.82rem;color:var(--olivo-d);font-style:italic}
+.guiones-stage .guion{display:none}
+.guiones-stage .guion.is-open{display:block;animation:guionIn .35s ease}
+@keyframes guionIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* ficha de guión */
 .guion{background:#fff;border:1px solid var(--linea);border-radius:var(--radius);overflow:hidden;margin-bottom:56px;scroll-margin-top:90px}
@@ -171,11 +178,12 @@ footer img{height:26px;opacity:.8}
       <a href="#g3"><span class="num">Guión 03</span><h3>Remarketing · Objeciones</h3><p>Caliente · Ya nos vio y no convirtió. Le demostramos que el proyecto es real y avanza.</p></a>
       <a href="#g4"><span class="num">Guión 04</span><h3>Proximidad · Renta a patrimonio</h3><p>Frío geolocalizado · Ya renta en la zona. Convertimos su renta en un depa propio.</p></a>
     </div>
+    <p class="tabs-hint">Haz clic en cualquier tarjeta para ver ese guión completo aquí abajo — se muestra uno a la vez.</p>
   </div>
 </section>
 
-<!-- ░░ GUIÓN 1 ░░ -->
-<section style="padding-top:0">
+<!-- ░░ GUIONES ░░ -->
+<section style="padding-top:0" class="guiones-stage">
   <div class="wrap">
 
     <article class="guion" id="g1">
@@ -503,6 +511,26 @@ footer img{height:26px;opacity:.8}
     <img src="assets/img/sentido-logo.png" alt="Sentido" />
   </div>
 </footer>
+
+<script>
+(function(){
+  var cards=document.querySelectorAll('.mapa a');
+  var guiones=document.querySelectorAll('.guiones-stage .guion');
+  function select(id){
+    guiones.forEach(function(g){g.classList.toggle('is-open',g.id===id)});
+    cards.forEach(function(c){c.classList.toggle('active',c.getAttribute('href')==='#'+id)});
+    if(history.replaceState) history.replaceState(null,'','#'+id);
+  }
+  cards.forEach(function(c){
+    c.addEventListener('click',function(e){
+      e.preventDefault();
+      select(c.getAttribute('href').slice(1));
+    });
+  });
+  var initial=/^#g[1-4]$/.test(location.hash)?location.hash.slice(1):'g1';
+  select(initial);
+})();
+</script>
 
 </body>
 </html>
