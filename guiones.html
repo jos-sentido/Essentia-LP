@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Essentia Country · Guiones para broker — Propuesta de segmentación</title>
+<meta name="description" content="Documento interno de revisión: propuesta de públicos y guiones de video para broker. Essentia Country × Sentido." />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#574545" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --negro:#1a1614;
+  --taupe:#574545;
+  --taupe-d:#3f3232;
+  --olivo:#7a7157;
+  --olivo-d:#605838;
+  --crema:#f3efe9;
+  --blanco:#ffffff;
+  --texto:#2b2522;
+  --linea:#ddd4c8;
+  --radius:4px;
+  --maxw:1060px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Josefin Sans',sans-serif;color:var(--texto);background:var(--crema);line-height:1.65;font-weight:300}
+h1,h2,h3{font-family:'Cinzel',serif;font-weight:500;line-height:1.2;color:var(--negro)}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(243,239,233,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
+.nav__in{max-width:var(--maxw);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav__logo{height:34px;width:auto}
+.chip{display:inline-block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--olivo);color:var(--olivo-d);padding:6px 12px;border-radius:2px;white-space:nowrap}
+
+/* hero */
+.hero{background:var(--negro);color:#fff;position:relative;overflow:hidden}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.34}
+.hero__in{position:relative;max-width:var(--maxw);margin:0 auto;padding:96px 24px 84px}
+.eyebrow{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#d8cfc0;margin-bottom:18px}
+.hero h1{color:#fff;font-size:clamp(1.7rem,4.4vw,2.9rem);max-width:760px}
+.hero p.sub{margin-top:22px;max-width:640px;color:#e8e2d8;font-size:1.05rem}
+.hero .meta{margin-top:34px;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:#b9ae9c}
+
+/* sections */
+section{padding:72px 0}
+.sec-head{max-width:680px;margin-bottom:42px}
+.sec-head .eyebrow{color:var(--olivo-d)}
+.sec-head h2{font-size:clamp(1.4rem,3vw,2rem)}
+.sec-head p{margin-top:14px}
+
+/* data cards */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.stat{background:#fff;border:1px solid var(--linea);border-radius:var(--radius);padding:26px 22px}
+.stat b{font-family:'Cinzel',serif;font-size:1.65rem;font-weight:600;color:var(--taupe);display:block;margin-bottom:8px}
+.stat span{font-size:.92rem;color:var(--texto)}
+.reading{background:#fff;border:1px solid var(--linea);border-left:3px solid var(--olivo);border-radius:var(--radius);padding:28px 30px;margin-top:26px;max-width:100%}
+.reading p+p{margin-top:12px}
+
+/* mapa de públicos */
+.mapa{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.mapa a{display:block;background:var(--negro);color:#fff;text-decoration:none;border-radius:var(--radius);padding:26px 22px;transition:background .25s}
+.mapa a:hover{background:var(--taupe-d)}
+.mapa .num{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.2em;color:#c9bfa9;display:block;margin-bottom:10px}
+.mapa h3{color:#fff;font-size:1.05rem;margin-bottom:8px}
+.mapa p{font-size:.85rem;color:#d8d2c6}
+
+/* ficha de guión */
+.guion{background:#fff;border:1px solid var(--linea);border-radius:var(--radius);overflow:hidden;margin-bottom:56px;scroll-margin-top:90px}
+.guion__cover{position:relative;height:300px}
+.guion__cover img{width:100%;height:100%;object-fit:cover}
+.guion__cover .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,22,20,.82),rgba(26,22,20,.05) 60%)}
+.guion__cover .titles{position:absolute;left:0;right:0;bottom:0;padding:26px 34px;color:#fff}
+.guion__cover .num{font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.24em;color:#d8cfc0;display:block;margin-bottom:8px}
+.guion__cover h3{color:#fff;font-size:clamp(1.25rem,2.6vw,1.7rem)}
+.guion__body{padding:36px 34px 42px}
+
+.fichagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;background:var(--linea);border:1px solid var(--linea);border-radius:var(--radius);overflow:hidden;margin-bottom:28px}
+.fichagrid div{background:var(--crema);padding:16px 18px}
+.fichagrid dt{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--olivo-d);margin-bottom:6px}
+.fichagrid dd{font-size:.92rem;margin:0}
+
+.insight{border-left:3px solid var(--taupe);padding:4px 0 4px 20px;margin-bottom:30px;max-width:760px}
+.insight .lbl{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe);display:block;margin-bottom:6px}
+
+.hook{background:var(--negro);color:#fff;border-radius:var(--radius);padding:30px 32px;margin-bottom:34px}
+.hook .lbl{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#c9bfa9;display:block;margin-bottom:12px}
+.hook p{font-family:'Cinzel',serif;font-size:clamp(1.05rem,2.2vw,1.35rem);line-height:1.45}
+.hook .ctx{font-family:'Josefin Sans',sans-serif;font-size:.85rem;color:#c9c2b4;margin-top:14px;line-height:1.6}
+
+/* tabla guión */
+.script{border:1px solid var(--linea);border-radius:var(--radius);overflow:hidden}
+.script__head{display:grid;grid-template-columns:86px 1fr 1fr;background:var(--taupe);color:#fff}
+.script__head div{padding:12px 18px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase}
+.row{display:grid;grid-template-columns:86px 1fr 1fr;border-top:1px solid var(--linea)}
+.row:nth-child(even){background:#faf8f4}
+.row .t{padding:18px;font-family:'Cinzel',serif;font-size:.82rem;font-weight:600;color:var(--taupe);border-right:1px solid var(--linea)}
+.row .v{padding:18px;font-size:.88rem;border-right:1px solid var(--linea)}
+.row .a{padding:18px;font-size:.95rem}
+.row .v .loc{display:inline-block;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;background:var(--crema);border:1px solid var(--linea);color:var(--olivo-d);padding:3px 8px;border-radius:2px;margin-bottom:8px}
+.row .a em{font-style:normal;color:var(--olivo-d)}
+.mobile-lbl{display:none}
+
+.cta-final{margin-top:26px;background:var(--crema);border:1px solid var(--linea);border-radius:var(--radius);padding:22px 26px;display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline}
+.cta-final .lbl{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--olivo-d)}
+.cta-final b{font-family:'Cinzel',serif;font-weight:600;color:var(--negro)}
+.prod-note{margin-top:18px;font-size:.85rem;color:#6b6257}
+.prod-note b{color:var(--texto)}
+
+/* producción */
+.dark{background:var(--negro);color:#e8e2d8}
+.dark .sec-head h2{color:#fff}
+.dark .sec-head .eyebrow{color:#c9bfa9}
+.prodgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.prodcard{border:1px solid #3a332e;border-radius:var(--radius);padding:26px 24px;background:#211c19}
+.prodcard h3{color:#fff;font-size:1rem;margin-bottom:12px}
+.prodcard ul{list-style:none}
+.prodcard li{padding:7px 0;border-top:1px solid #322b26;font-size:.9rem}
+.prodcard li:first-child{border-top:0}
+.prodcard li span{color:#a89d8b;font-size:.78rem;display:block}
+
+/* validación */
+.valida{background:#fff;border:1px solid var(--linea);border-left:3px solid #b0883f;border-radius:var(--radius);padding:28px 30px}
+.valida h3{font-size:1rem;margin-bottom:12px}
+.valida ul{margin:10px 0 0 18px}
+.valida li{margin-bottom:8px;font-size:.93rem}
+
+footer{background:var(--negro);color:#8f8677;padding:44px 0;font-size:.82rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;justify-content:space-between}
+footer img{height:26px;opacity:.8}
+
+@media(max-width:760px){
+  .guion__body{padding:28px 20px 34px}
+  .guion__cover .titles{padding:20px 22px}
+  .script__head{display:none}
+  .row{grid-template-columns:1fr;border-top:0;border-bottom:1px solid var(--linea);padding:6px 0}
+  .row .t,.row .v{border-right:0}
+  .row .t{padding:14px 18px 0}
+  .mobile-lbl{display:block;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--olivo-d);margin-bottom:6px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav__in">
+    <img src="assets/img/logo-negro.png" alt="Essentia Country" class="nav__logo" />
+    <span class="chip">Documento de revisión interna</span>
+  </div>
+</header>
+
+<!-- ░░ HERO ░░ -->
+<section class="hero">
+  <img src="assets/img/hero-exterior.webp" alt="" class="bg" />
+  <div class="hero__in">
+    <p class="eyebrow">Essentia Country · Propuesta de contenido pautado</p>
+    <h1>Guiones para broker: un mensaje distinto para cada público</h1>
+    <p class="sub">Propuesta de segmentación de audiencias y cuatro guiones de video para asesor frente a cámara — con hook, mensaje diferenciado, indicaciones de toma y llamado a la acción alineado al objetivo de cada campaña.</p>
+    <p class="meta">Preparado por Sentido para Peninsula Lifestyle Properties · Julio 2026</p>
+  </div>
+</section>
+
+<!-- ░░ CONTEXTO ░░ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">01 · Punto de partida</p>
+      <h2>Qué dicen los datos de la campaña actual</h2>
+      <p>Antes de proponer públicos revisamos el desempeño real de la pauta (enero – junio 2026). Estas son las señales que sostienen la segmentación.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>214 leads</b><span>generados en Meta Ads a un CPL de MX$679 — el canal funciona y hay demanda comprobada.</span></div>
+      <div class="stat"><b>76% Instagram</b><span>3 de cada 4 leads llegan por IG. El formato natural es video vertical (Reel / Story pautado).</span></div>
+      <div class="stat"><b>1 creatividad</b><span>un solo video activo durante 5+ meses. La fatiga es medible: el CPL osciló entre MX$290 y MX$2,133.</span></div>
+      <div class="stat"><b>1 solo público</b><span>toda la inversión de Meta corre sobre un único conjunto de anuncios (Guadalajara amplio), sin segmentación por perfil.</span></div>
+    </div>
+    <div class="reading">
+      <p><b>Lectura:</b> hoy la campaña le habla igual a todos. La misma pieza intenta convencer al que quiere vivir en Country Club, al que busca dónde invertir y al que ya nos vio pero no se decidió. Cada uno de esos perfiles responde a motivaciones distintas — y a un llamado a la acción distinto.</p>
+      <p>Por eso proponemos <b>cuatro públicos con un guión propio cada uno</b>: dos para captación fría (cliente final e inversionista, cada uno alineado a su variante de landing), uno de remarketing que responde directamente a las dudas que aparecen en comentarios, y uno de proximidad que aprovecha el arraigo por la zona. Los leads de 25–44 años concentran la respuesta actual, y todos los guiones están pensados para producirse en las locaciones reales del desarrollo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ MAPA ░░ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">02 · La segmentación propuesta</p>
+      <h2>Cuatro públicos, cuatro conversaciones</h2>
+    </div>
+    <div class="mapa">
+      <a href="#g1"><span class="num">Guión 01</span><h3>Cliente final · Lifestyle</h3><p>Frío · Meta (IG/FB) · Quiere vivir mejor. Le vendemos el día a día en Country Club.</p></a>
+      <a href="#g2"><span class="num">Guión 02</span><h3>Inversionista</h3><p>Frío/tibio · Meta + Google · Quiere números. Le damos la tesis de inversión de la zona.</p></a>
+      <a href="#g3"><span class="num">Guión 03</span><h3>Remarketing · Objeciones</h3><p>Caliente · Ya nos vio y no convirtió. Le demostramos que el proyecto es real y avanza.</p></a>
+      <a href="#g4"><span class="num">Guión 04</span><h3>Proximidad · Zona</h3><p>Frío geolocalizado · Vive o trabaja cerca. Activamos la pertenencia al Country.</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ GUIÓN 1 ░░ -->
+<section style="padding-top:0">
+  <div class="wrap">
+
+    <article class="guion" id="g1">
+      <div class="guion__cover">
+        <img src="assets/img/interior-sala.webp" alt="Sala del departamento muestra de Essentia Country" />
+        <div class="scrim"></div>
+        <div class="titles">
+          <span class="num">Guión 01 · 55 segundos</span>
+          <h3>Cliente final — «El silencio que hace la gente cuando entra»</h3>
+        </div>
+      </div>
+      <div class="guion__body">
+        <dl class="fichagrid">
+          <div><dt>Público</dt><dd>Parejas y profesionistas de 28–45 en GDL que buscan comprar para vivir. Intereses: hogar, diseño, calidad de vida.</dd></div>
+          <div><dt>Temperatura</dt><dd>Fría — primera exposición a la marca.</dd></div>
+          <div><dt>Canal y formato</dt><dd>Meta (Instagram prioridad) · Reel/Story vertical 9:16.</dd></div>
+          <div><dt>Destino</dt><dd>Landing variante Lifestyle (/a) · Objetivo: agendar visita.</dd></div>
+        </dl>
+        <div class="insight">
+          <span class="lbl">Por qué este mensaje</span>
+          <p>El cliente final no compra metros cuadrados: compra la escena de su vida diaria. El guión recorre el departamento muestra como lo haría una visita real, y usa el recurso más creíble que tiene un broker — lo que ve pasar con sus propios clientes.</p>
+        </div>
+        <div class="hook">
+          <span class="lbl">Hook · segundos 0–4</span>
+          <p>«La mayoría de mis clientes hace exactamente lo mismo cuando entra aquí por primera vez: se queda callada.»</p>
+          <p class="ctx">El broker abre la puerta del departamento muestra y entra a cámara. La pausa después de "callada" — dos segundos de silencio mientras la cámara revela la sala — ES el hook. No se llena con música.</p>
+        </div>
+        <div class="script">
+          <div class="script__head"><div>Tiempo</div><div>Video · plano y locación</div><div>Audio · broker</div></div>
+          <div class="row">
+            <div class="t">0–4"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Depa muestra · Entrada</span>Cámara en gimbal sigue al broker por la espalda mientras abre la puerta; al cruzar el umbral, el broker gira a cámara. Luz natural.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«La mayoría de mis clientes hace exactamente lo mismo cuando entra aquí por primera vez: se queda callada.» <em>(pausa de 2")</em></div>
+          </div>
+          <div class="row">
+            <div class="t">4–14"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Depa muestra · Sala–comedor</span>Paneo lento de la sala hacia el ventanal. El broker camina de lado, la cámara lo sigue en travelling; termina en plano medio con el ventanal detrás.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Y no es por los acabados — que ahorita los ves. Es por esto: estás en el corazón de Country Club, la colonia con más árboles por metro cuadrado de Guadalajara, y lo único que se escucha… es nada.»</div>
+          </div>
+          <div class="row">
+            <div class="t">14–26"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Depa muestra · Cocina y recámara</span>Dos cortes rápidos: (1) plano detalle de la cubierta de cocina con la mano del broker recorriéndola, (2) plano general de recámara principal desde la puerta.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Departamentos de una a tres recámaras, desde 83 hasta más de 150 metros cuadrados. Cocina abierta, recámaras con esta luz todo el día. Diseñados para vivirse, no para presumirse.»</div>
+          </div>
+          <div class="row">
+            <div class="t">26–40"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Amenidades · Alberca y spa</span>Corte a la zona de alberca: plano general con dolly-in suave. Inserto de 2" del spa. El broker aparece caminando junto a la alberca, plano americano.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Y cuando sales de tu depa, no sales del plan: alberca, spa, bar, jardines, gimnasio. Ocho amenidades para que el fin de semana empiece en el elevador.»</div>
+          </div>
+          <div class="row">
+            <div class="t">40–49"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Entorno · Calle arbolada Country Club</span>Exterior: el broker cruza a cámara por la banqueta arbolada. Plano abierto que respire — que se vea la escala de los árboles y la tranquilidad de la calle.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Esto está a unos pasos de tu café, de Andares en diez minutos, de la Minerva en cinco. Preventa desde 6.4 millones de pesos.»</div>
+          </div>
+          <div class="row">
+            <div class="t">49–55"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Depa muestra · Ventanal</span>Cierre: plano medio fijo del broker en el ventanal de la sala, tono cercano, media sonrisa.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Agenda tu visita. Ven a quedarte callado un rato — el link está aquí abajo.»</div>
+          </div>
+        </div>
+        <div class="cta-final"><span class="lbl">CTA en pantalla</span><b>«Agenda tu visita» → Landing Lifestyle (/a)</b><span style="font-size:.85rem">Botón del anuncio: "Más información" · Overlay final con logo + "Preventa · Country Club"</span></div>
+        <p class="prod-note"><b>Nota de producción:</b> todo el guión se sostiene en luz natural de mañana (9:00–11:00 h). Subtítulos quemados obligatorios — el 76% del público lo verá en IG, muchos sin audio.</p>
+      </div>
+    </article>
+
+    <!-- ░░ GUIÓN 2 ░░ -->
+    <article class="guion" id="g2">
+      <div class="guion__cover">
+        <img src="assets/img/gym-view.webp" alt="Vista panorámica de Guadalajara desde el gimnasio de Essentia Country" />
+        <div class="scrim"></div>
+        <div class="titles">
+          <span class="num">Guión 02 · 60 segundos</span>
+          <h3>Inversionista — «El metro cuadrado que se defiende solo»</h3>
+        </div>
+      </div>
+      <div class="guion__body">
+        <dl class="fichagrid">
+          <div><dt>Público</dt><dd>30–55, intereses en inversión inmobiliaria, finanzas, preventas. Incluye tráfico de Google Search (keywords de inversión y zona).</dd></div>
+          <div><dt>Temperatura</dt><dd>Fría/tibia — compara opciones, decide con números.</dd></div>
+          <div><dt>Canal y formato</dt><dd>Meta + apoyo en YouTube/Demand Gen · Vertical 9:16 (master reutilizable en 16:9).</dd></div>
+          <div><dt>Destino</dt><dd>Landing variante Inversión (/b) · Objetivo: usar la calculadora y dejar sus datos.</dd></div>
+        </dl>
+        <div class="insight">
+          <span class="lbl">Por qué este mensaje</span>
+          <p>El inversionista no responde a adjetivos, responde a tesis: zona consolidada + ticket de entrada + condiciones de preventa. Aquí el broker no recorre: argumenta. Plano fijo, autoridad, datos concretos — y la altura real del edificio como prueba visual de la tesis.</p>
+        </div>
+        <div class="hook">
+          <span class="lbl">Hook · segundos 0–5</span>
+          <p>«El metro cuadrado promedio en Guadalajara ronda los 25 mil pesos. Desde donde te estoy hablando, vale más del doble. Déjame explicarte por qué eso es una buena noticia.»</p>
+          <p class="ctx">El broker habla a cámara fija con la vista panorámica real de la ciudad detrás (gimnasio, piso alto). El contraste "dato duro + lugar real" detiene el scroll del perfil inversionista.</p>
+        </div>
+        <div class="script">
+          <div class="script__head"><div>Tiempo</div><div>Video · plano y locación</div><div>Audio · broker</div></div>
+          <div class="row">
+            <div class="t">0–5"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Gimnasio · Ventanal panorámico</span>Plano medio fijo (tripié), broker de frente con la ciudad al fondo. Sin música los primeros 3" — solo su voz.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«El metro cuadrado promedio en Guadalajara ronda los 25 mil pesos. Desde donde te estoy hablando, vale más del doble. Déjame explicarte por qué eso es una buena noticia.»</div>
+          </div>
+          <div class="row">
+            <div class="t">5–18"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Dron · Torre y colonia</span>Corte a toma aérea: órbita lenta alrededor de la torre revelando el tejido arbolado de Country Club. Rótulos sobrios sobre el video: "Country Club · zona consolidada".</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Esto es Country Club: una colonia que ya no tiene terrenos, que no depende de que "llegue la plusvalía" — porque aquí llegó hace décadas. Cuando una zona ya está consolidada, tu inversión no apuesta: se sube a algo que ya funciona.» <em>(voz en off sobre dron)</em></div>
+          </div>
+          <div class="row">
+            <div class="t">18–32"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Gimnasio · Recorrido corto</span>Regreso al broker: camina entre los equipos (gimnasio ya terminado y equipado), cámara en gimbal frontal retrocediendo. Termina señalando la vista.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Essentia te deja entrar a esa zona en preventa: desde 6.4 millones en unidades de una recámara, hasta residencias de tres. Con un esquema pensado para inversionista: 30 por ciento de enganche, 18 mensualidades sin intereses, y el resto contra entrega.»</div>
+          </div>
+          <div class="row">
+            <div class="t">32–45"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Depa muestra · Sala</span>Corte al departamento muestra: plano general fijo. Rótulos de apoyo sobrios (aparecen y desaparecen): "1 a 3 recámaras · 83–152 m²".</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«¿Y la renta? Country Club es de las zonas con mayor demanda de arrendamiento premium de la ciudad — profesionistas y ejecutivos que quieren exactamente esta ubicación. Producto que se renta solo y que históricamente se revalúa por encima del promedio de la ciudad.»</div>
+          </div>
+          <div class="row">
+            <div class="t">45–54"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Gimnasio · Ventanal (cierre)</span>Vuelta al plano fijo inicial — misma composición del hook (cierra el círculo visual). Tono directo.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«En la página hicimos una calculadora: eliges tipología y te muestra enganche, mensualidades y el escenario de tu inversión a cinco años. Sin llamadas, sin compromiso.»</div>
+          </div>
+          <div class="row">
+            <div class="t">54–60"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Dron · Cierre ascendente</span>Toma aérea final ascendiendo sobre la torre al atardecer. Logo + CTA en pantalla.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Calcula tu inversión en Essentia Country. El link está abajo. Los números hablan mejor que yo.»</div>
+          </div>
+        </div>
+        <div class="cta-final"><span class="lbl">CTA en pantalla</span><b>«Calcular mi inversión» → Landing Inversión (/b) · ancla #calculadora</b><span style="font-size:.85rem">Botón del anuncio: "Registrarte" o "Más información"</span></div>
+        <p class="prod-note"><b>Nota de producción:</b> los datos de mercado del guión provienen del análisis de contexto (promedios de portales inmobiliarios). Antes de pautar, validar con PLP qué cifras se autorizan en comunicación pública; el guión evita prometer rendimientos garantizados a propósito.</p>
+      </div>
+    </article>
+
+    <!-- ░░ GUIÓN 3 ░░ -->
+    <article class="guion" id="g3">
+      <div class="guion__cover">
+        <img src="assets/img/exterior-vertical.webp" alt="Torre real de Essentia Country en construcción avanzada" />
+        <div class="scrim"></div>
+        <div class="titles">
+          <span class="num">Guión 03 · 50 segundos</span>
+          <h3>Remarketing — «Esto no es un render»</h3>
+        </div>
+      </div>
+      <div class="guion__body">
+        <dl class="fichagrid">
+          <div><dt>Público</dt><dd>Remarketing: interactuó con anuncios/perfil o visitó la landing en los últimos 90 días y no dejó sus datos. También leads fríos sin cita.</dd></div>
+          <div><dt>Temperatura</dt><dd>Caliente — ya nos conoce; algo lo detiene.</dd></div>
+          <div><dt>Canal y formato</dt><dd>Meta (remarketing) · Reel/Story 9:16 · Estilo un solo plano, crudo, sin sobre-producción.</dd></div>
+          <div><dt>Destino</dt><dd>Landing (/a) · Objetivo: agendar recorrido presencial.</dd></div>
+        </dl>
+        <div class="insight">
+          <span class="lbl">Por qué este mensaje</span>
+          <p>La objeción #1 documentada en comentarios es la desconfianza en la entrega ("¿y sí lo terminan?"). No se responde con adjetivos sino con evidencia: la torre existe, el gimnasio ya está equipado y las vistas son reales. Este guión se produce a propósito con estética de "toma única con celular" — la falta de pulido ES el argumento de autenticidad. Es también la pieza que renueva la creatividad fatigada con el mensaje que la audiencia caliente necesita oír.</p>
+        </div>
+        <div class="hook">
+          <span class="lbl">Hook · segundos 0–4</span>
+          <p>«¿Crees que esto es un render? Ven, te enseño algo.»</p>
+          <p class="ctx">El broker está parado en la calle, de espaldas a la torre real; señala hacia arriba con el pulgar y camina hacia el acceso. La cámara (handheld, un solo operador) lo sigue. Sensación de video espontáneo, no de comercial.</p>
+        </div>
+        <div class="script">
+          <div class="script__head"><div>Tiempo</div><div>Video · plano y locación</div><div>Audio · broker</div></div>
+          <div class="row">
+            <div class="t">0–4"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Exterior · Frente a la torre</span>Contrapicado handheld: broker en primer plano, la torre real subiendo detrás de él. Tilt-up rápido de 1" que muestra la altura completa.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«¿Crees que esto es un render? Ven, te enseño algo.»</div>
+          </div>
+          <div class="row">
+            <div class="t">4–12"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Acceso · Lobby</span>Plano secuencia (continúa el mismo take): el broker entra por el acceso, saluda a seguridad con la mano, la cámara lo sigue.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Sé lo que se dice de las preventas: que si el render muy bonito, que si "algún día lo entregan". Aquí no te voy a enseñar renders. Te voy a enseñar lo que ya existe.»</div>
+          </div>
+          <div class="row">
+            <div class="t">12–24"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Gimnasio · Piso alto</span>Corte (el único del video): puertas del elevador se abren al gimnasio. El broker recorre los equipos tocándolos; remata frente al ventanal panorámico y abre los brazos.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Este es el gimnasio. No es maqueta: está terminado y equipado. Y esta vista… esta vista ya es real. Estamos a más de veinte pisos sobre Country Club, y esto se ve desde el edificio hoy — no "cuando esté listo".»</div>
+          </div>
+          <div class="row">
+            <div class="t">24–36"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Depa muestra · Sala/cocina</span>Continúa handheld: pasa por el departamento muestra, abre un cajón de la cocina, se sienta un segundo en el sillón. Naturalidad total.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Este es el departamento muestra — así se entrega el tuyo. Y detrás de esto hay un desarrollador con proyectos entregados en Vallarta, en Chapultepec, en la costa. No es su primer edificio; es su portafolio creciendo.»</div>
+          </div>
+          <div class="row">
+            <div class="t">36–44"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Gimnasio · Ventanal</span>Plano medio, el broker de frente, ciudad al fondo. Baja el ritmo; habla más lento y directo.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Si nos viste y algo te detuvo, es normal — comprar en preventa se decide con los ojos. Por eso no te pido que me creas a mí.»</div>
+          </div>
+          <div class="row">
+            <div class="t">44–50"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Exterior · Torre (cierre)</span>Última toma: broker de vuelta en la calle, mismo encuadre del hook. Señala a cámara. Rótulo final: "Ven a comprobarlo".</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Agenda un recorrido, quince minutos. Lo ves con tus propios ojos y decides con calma. El link está aquí abajo.»</div>
+          </div>
+        </div>
+        <div class="cta-final"><span class="lbl">CTA en pantalla</span><b>«Ven a comprobarlo — agenda tu recorrido» → Landing (/a)</b><span style="font-size:.85rem">Frecuencia sugerida: tope de 4–5 impresiones por persona / 7 días para no quemar la audiencia caliente</span></div>
+        <p class="prod-note"><b>⚠ Validación PLP requerida:</b> este guión toca el tema de avance de obra. No promete fechas ni porcentajes — solo muestra lo verificable en sitio — pero debe alinearse con la política oficial de comunicación de entrega de PLP antes de producirse.</p>
+      </div>
+    </article>
+
+    <!-- ░░ GUIÓN 4 ░░ -->
+    <article class="guion" id="g4">
+      <div class="guion__cover">
+        <img src="assets/img/exterior-country.webp" alt="Entorno arbolado de la colonia Country Club en Guadalajara" />
+        <div class="scrim"></div>
+        <div class="titles">
+          <span class="num">Guión 04 · 50 segundos</span>
+          <h3>Proximidad — «Tú ya sabes lo que vale esta zona»</h3>
+        </div>
+      </div>
+      <div class="guion__body">
+        <dl class="fichagrid">
+          <div><dt>Público</dt><dd>Radio geolocalizado: vive o trabaja en Country Club, Providencia, Chapultepec Country y alrededores. 30–55.</dd></div>
+          <div><dt>Temperatura</dt><dd>Fría, pero con contexto: ya conoce (y valora) la zona.</dd></div>
+          <div><dt>Canal y formato</dt><dd>Meta geolocalizado · Reel/Story 9:16.</dd></div>
+          <div><dt>Destino</dt><dd>Landing (/a) · Objetivo: visita al depa muestra ("estás a 5 minutos").</dd></div>
+        </dl>
+        <div class="insight">
+          <span class="lbl">Por qué este mensaje</span>
+          <p>A quien ya vive cerca no hay que venderle la zona — hay que resolverle una paradoja: ama el Country pero ahí "ya no se estrena nada". El guión activa pertenencia (habla como vecino, no como vendedor) y posiciona a Essentia donde es única: torre residencial nueva <em>adentro</em> de la colonia, no sobre la avenida. Es también el público con menor fricción para visitar: está a minutos del depa muestra.</p>
+        </div>
+        <div class="hook">
+          <span class="lbl">Hook · segundos 0–5</span>
+          <p>«Si vives por aquí, no te tengo que explicar por qué nadie se quiere ir de esta zona. Lo que sí te tengo que contar… es que todavía puedes estrenar en ella.»</p>
+          <p class="ctx">El broker camina por una calle arbolada reconocible del Country, saluda de lejos a alguien (vecindad real). Quien vive ahí reconoce la calle en el primer segundo — ese reconocimiento es el hook.</p>
+        </div>
+        <div class="script">
+          <div class="script__head"><div>Tiempo</div><div>Video · plano y locación</div><div>Audio · broker</div></div>
+          <div class="row">
+            <div class="t">0–5"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Entorno · Calle arbolada</span>Travelling lateral acompañando al broker que camina por la banqueta bajo los árboles. Luz de mañana, ambiente sonoro real (pájaros, calle tranquila).</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Si vives por aquí, no te tengo que explicar por qué nadie se quiere ir de esta zona. Lo que sí te tengo que contar… es que todavía puedes estrenar en ella.»</div>
+          </div>
+          <div class="row">
+            <div class="t">5–16"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Dron · Colonia y torre</span>Toma aérea baja sobre las copas de los árboles que avanza hasta revelar la torre integrada al tejido de la colonia. Rótulo: "Av. Álvarez del Castillo · Country Club".</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«En Country Club ya casi no pasa: las casas no se venden, los terrenos no existen. Por eso Essentia es una rareza — una torre residencial nueva adentro de la colonia. No sobre la avenida: en la parte tranquila, la de los árboles.» <em>(voz en off)</em></div>
+          </div>
+          <div class="row">
+            <div class="t">16–28"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Depa muestra · Recámara y sala</span>El broker entra al depa muestra; plano medio siguiéndolo. Se detiene en el ventanal con vista a la zona arbolada.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Piénsalo así: mismos rumbos, mismo café de siempre, misma ruta al trabajo — pero estrenando. Una a tres recámaras, desde 83 metros, con la colonia que ya conoces allá abajo.»</div>
+          </div>
+          <div class="row">
+            <div class="t">28–38"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Amenidades · Alberca / camastros</span>Secuencia corta de amenidades: alberca (plano general), camastros (detalle), bar (paneo breve). El broker aparece al final apoyado en la barra.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Con lo que las casas de la zona no tienen: alberca, spa, gimnasio, bar, seguridad las veinticuatro horas. Lo mejor de la colonia, más lo que a la colonia le faltaba.»</div>
+          </div>
+          <div class="row">
+            <div class="t">38–45"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Exterior · Acceso Essentia</span>Plano medio fijo del broker en el acceso del desarrollo, tono de vecino a vecino.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Estamos en preventa desde 6.4 millones. Y tú tienes una ventaja sobre todos los demás interesados: el departamento muestra te queda a cinco minutos.»</div>
+          </div>
+          <div class="row">
+            <div class="t">45–50"</div>
+            <div class="v"><span class="mobile-lbl">Video</span><span class="loc">Entorno · Calle (cierre)</span>Cierre espejo del hook: el broker sigue caminando por la banqueta y se despide a cámara. Logo + CTA.</div>
+            <div class="a"><span class="mobile-lbl">Audio</span>«Vente hoy saliendo del trabajo, o el sábado antes del café. Agenda abajo — nos vemos en la esquina de siempre.»</div>
+          </div>
+        </div>
+        <div class="cta-final"><span class="lbl">CTA en pantalla</span><b>«Estás a 5 minutos — agenda tu visita» → Landing (/a)</b><span style="font-size:.85rem">Segmentación sugerida: radio de 3–5 km alrededor del desarrollo + intereses de estilo de vida local</span></div>
+        <p class="prod-note"><b>Nota de producción:</b> cuidar que las tomas de calle sean del entorno inmediato real (Av. Álvarez del Castillo y calles interiores del Country) — el reconocimiento del lugar es la mecánica del guión. Evitar mensajes comparativos directos con otros desarrollos.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ░░ PRODUCCIÓN ░░ -->
+<section class="dark">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">03 · Notas generales de producción</p>
+      <h2>Un día de rodaje, cuatro piezas</h2>
+      <p style="color:#c9c2b4">Los cuatro guiones comparten locaciones y pueden producirse en una sola jornada con un operador de cámara + dron. Cada guión pide un tratamiento distinto a propósito — la variedad de estilos también combate la fatiga creativa.</p>
+    </div>
+    <div class="prodgrid">
+      <div class="prodcard">
+        <h3>Formato y entrega</h3>
+        <ul>
+          <li>Master vertical 9:16 (1080×1920) <span>prioridad Reels/Stories — 76% de leads viene de IG</span></li>
+          <li>Subtítulos quemados en todas las piezas <span>gran parte del consumo es sin audio</span></li>
+          <li>45–60 segundos por pieza <span>+ recorte de hook (10–15") como variante de anuncio</span></li>
+          <li>Guión 02 también en 16:9 <span>para YouTube / Demand Gen con tráfico de Google</span></li>
+        </ul>
+      </div>
+      <div class="prodcard">
+        <h3>Locaciones por guión</h3>
+        <ul>
+          <li>Departamento muestra <span>guiones 01 · 02 · 03 · 04</span></li>
+          <li>Gimnasio piso alto (terminado, con vista) <span>guiones 02 · 03</span></li>
+          <li>Amenidades: alberca, spa, bar, camastros <span>guiones 01 · 04</span></li>
+          <li>Exterior torre + acceso/lobby <span>guiones 03 · 04</span></li>
+          <li>Calles arboladas del Country (entorno) <span>guiones 01 · 04</span></li>
+          <li>Dron: órbita de torre + vuelo bajo sobre colonia <span>guiones 02 · 04</span></li>
+        </ul>
+      </div>
+      <div class="prodcard">
+        <h3>El broker frente a cámara</h3>
+        <ul>
+          <li>Tono conversacional, no de spot <span>habla como en un recorrido real, no lee un anuncio</span></li>
+          <li>Vestimenta: formal-relajado en tonos neutros <span>alineado a la paleta de marca (taupe/olivo), sin logos ajenos</span></li>
+          <li>Guión 03 se graba estilo "toma única" <span>la crudeza es intencional: autenticidad como argumento</span></li>
+          <li>Micrófono de solapa siempre <span>la voz es el 80% de estas piezas</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ VALIDACIÓN ░░ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">04 · Antes de producir</p>
+      <h2>Puntos a validar con PLP</h2>
+    </div>
+    <div class="valida">
+      <h3>Este documento es una propuesta de trabajo — requiere visto bueno en tres puntos:</h3>
+      <ul>
+        <li><b>Comunicación de avance de obra (Guión 03):</b> el guión no promete fechas ni porcentajes, pero debe alinearse con la política oficial de comunicación de entrega de PLP.</li>
+        <li><b>Cifras de mercado (Guión 02):</b> los datos de valor por m² y demanda de renta provienen del análisis de contexto (portales inmobiliarios). Definir qué cifras se autorizan en comunicación pública.</li>
+        <li><b>Precios y esquema de pago:</b> los guiones usan la lista vigente (desde $6.4 MDP · 30% / 18 MSI / 30%). Confirmar vigencia al momento de producción.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Essentia Country · Propuesta de guiones para broker — documento interno de revisión</span>
+    <img src="assets/img/sentido-logo.png" alt="Sentido" />
+  </div>
+</footer>
+
+</body>
+</html>
