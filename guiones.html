@@ -35,6 +35,8 @@ img{max-width:100%;display:block}
 .nav{position:sticky;top:0;z-index:50;background:rgba(243,239,233,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
 .nav__in{max-width:var(--maxw);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .nav__logo{height:34px;width:auto}
+.nav__right{display:flex;align-items:center;gap:16px}
+.nav__sentido{height:30px;width:auto}
 .chip{display:inline-block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--olivo);color:var(--olivo-d);padding:6px 12px;border-radius:2px;white-space:nowrap}
 
 /* hero */
@@ -114,7 +116,7 @@ section{padding:72px 0}
 
 footer{background:var(--negro);color:#8f8677;padding:44px 0;font-size:.82rem}
 footer .wrap{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;justify-content:space-between}
-footer img{height:26px;opacity:.8}
+footer img{height:34px;width:auto;filter:invert(1);opacity:.85}
 
 @media(max-width:760px){
   .guion__body{padding:28px 20px 34px}
@@ -132,7 +134,10 @@ footer img{height:26px;opacity:.8}
 <header class="nav">
   <div class="nav__in">
     <img src="assets/img/logo-negro.png" alt="Essentia Country" class="nav__logo" />
-    <span class="chip">Documento de revisión interna</span>
+    <div class="nav__right">
+      <span class="chip">Documento de revisión interna</span>
+      <img src="assets/img/sentido-logo.png" alt="Sentido" class="nav__sentido" />
+    </div>
   </div>
 </header>
 
