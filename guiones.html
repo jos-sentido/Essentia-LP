@@ -58,8 +58,19 @@ section{padding:72px 0}
 
 /* mapa de públicos (selector de guión) */
 .mapa{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.mapa-toggle{display:none}
 @media(max-width:960px){.mapa{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:640px){.mapa{grid-template-columns:1fr}}
+@media(max-width:640px){
+  .mapa-toggle{display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;background:var(--negro);color:#fff;border:1px solid var(--olivo);border-radius:var(--radius);padding:16px 18px;font-family:'Josefin Sans',sans-serif;font-size:.9rem;letter-spacing:.05em;cursor:pointer;text-align:left}
+  .mapa-toggle .caret{flex:none;transition:transform .25s;color:#c9bfa9}
+  .mapa-toggle.open .caret{transform:rotate(180deg)}
+  .mapa{display:none;grid-template-columns:1fr;gap:8px;margin-top:10px}
+  .mapa.open{display:grid}
+  .mapa a{padding:14px 16px}
+  .mapa p{display:none}
+  .mapa h3{margin-bottom:0}
+  .mapa .num{margin-bottom:4px}
+}
 .mapa a{position:relative;display:block;background:var(--negro);color:#fff;text-decoration:none;border-radius:var(--radius);padding:20px 16px;transition:background .25s,box-shadow .25s;border:1px solid transparent}
 .mapa a:hover{background:var(--taupe-d)}
 .mapa a.active{background:var(--taupe-d);border-color:var(--olivo);box-shadow:0 0 0 1px var(--olivo)}
@@ -167,7 +178,11 @@ footer img{height:34px;width:auto;filter:invert(1);opacity:.85}
       <p class="eyebrow">01 · La segmentación propuesta</p>
       <h2>Cuatro públicos, cinco piezas</h2>
     </div>
-    <div class="mapa">
+    <button type="button" class="mapa-toggle" id="mapa-toggle" aria-expanded="false" aria-controls="mapa-list">
+      <span id="mapa-toggle-label">Guión 01 · Cliente final · Lifestyle</span>
+      <span class="caret">▾</span>
+    </button>
+    <div class="mapa" id="mapa-list">
       <a href="#g1"><span class="num">Guión 01</span><h3>Cliente final · Lifestyle</h3><p>Frío · Meta (IG/FB) · Quiere vivir mejor. Le vendemos el día a día en Country Club.</p></a>
       <a href="#g2"><span class="num">Guión 02</span><h3>Inversionista</h3><p>Frío/tibio · Compara y decide con números. Le damos la tesis de inversión de la zona.</p></a>
       <a href="#g3"><span class="num">Guión 03</span><h3>Remarketing · Objeciones</h3><p>Caliente · Ya nos vio y no convirtió. Le demostramos que el proyecto es real y avanza.</p></a>
@@ -564,6 +579,14 @@ footer img{height:34px;width:auto;filter:invert(1);opacity:.85}
     var c=cards[ids.indexOf(id)];
     return c?c.querySelector('.num').textContent.trim()+' · '+c.querySelector('h3').textContent.trim():'';
   }
+  var mapa=document.getElementById('mapa-list');
+  var mapaToggle=document.getElementById('mapa-toggle');
+  var mapaLabel=document.getElementById('mapa-toggle-label');
+  function closeMapa(){
+    mapa.classList.remove('open');
+    mapaToggle.classList.remove('open');
+    mapaToggle.setAttribute('aria-expanded','false');
+  }
   function select(id,scrollToGuion){
     guiones.forEach(function(g){g.classList.toggle('is-open',g.id===id)});
     cards.forEach(function(c){c.classList.toggle('active',c.getAttribute('href')==='#'+id)});
@@ -573,15 +596,23 @@ footer img{height:34px;width:auto;filter:invert(1);opacity:.85}
     nextBtn.disabled=(i>=ids.length-1);
     if(i>0) prevBtn.textContent='← '+labelFor(ids[i-1]);
     if(i<ids.length-1) nextBtn.textContent=labelFor(ids[i+1])+' →';
+    mapaLabel.textContent=labelFor(id);
     if(scrollToGuion){
       var el=document.getElementById(id);
       if(el&&el.scrollIntoView) el.scrollIntoView({behavior:'smooth'});
     }
   }
+  mapaToggle.addEventListener('click',function(){
+    var opening=!mapa.classList.contains('open');
+    mapa.classList.toggle('open',opening);
+    mapaToggle.classList.toggle('open',opening);
+    mapaToggle.setAttribute('aria-expanded',opening?'true':'false');
+  });
   cards.forEach(function(c){
     c.addEventListener('click',function(e){
       e.preventDefault();
       select(c.getAttribute('href').slice(1),false);
+      closeMapa();
     });
   });
   prevBtn.addEventListener('click',function(){
