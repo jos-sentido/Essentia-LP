@@ -57,15 +57,17 @@ section{padding:72px 0}
 .sec-head p{margin-top:14px}
 
 /* mapa de públicos (selector de guión) */
-.mapa{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-.mapa a{position:relative;display:block;background:var(--negro);color:#fff;text-decoration:none;border-radius:var(--radius);padding:26px 22px;transition:background .25s,box-shadow .25s;border:1px solid transparent}
+.mapa{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+@media(max-width:960px){.mapa{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.mapa{grid-template-columns:1fr}}
+.mapa a{position:relative;display:block;background:var(--negro);color:#fff;text-decoration:none;border-radius:var(--radius);padding:20px 16px;transition:background .25s,box-shadow .25s;border:1px solid transparent}
 .mapa a:hover{background:var(--taupe-d)}
 .mapa a.active{background:var(--taupe-d);border-color:var(--olivo);box-shadow:0 0 0 1px var(--olivo)}
 .mapa a.active::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--olivo);border-radius:var(--radius) var(--radius) 0 0}
 .mapa a.active .num::after{content:"· viendo ahora";color:#cfc49f;letter-spacing:.08em;margin-left:6px;text-transform:none}
-.mapa .num{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.2em;color:#c9bfa9;display:block;margin-bottom:10px}
-.mapa h3{color:#fff;font-size:1.05rem;margin-bottom:8px}
-.mapa p{font-size:.85rem;color:#d8d2c6}
+.mapa .num{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.16em;color:#c9bfa9;display:block;margin-bottom:8px}
+.mapa h3{color:#fff;font-size:.95rem;margin-bottom:8px}
+.mapa p{font-size:.8rem;color:#d8d2c6;line-height:1.55}
 .tabs-hint{margin-top:18px;font-size:.82rem;color:var(--olivo-d);font-style:italic}
 .guion-nav{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-top:6px}
 .gnav__btn{font-family:'Josefin Sans',sans-serif;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;background:#fff;border:1px solid var(--linea);color:var(--texto);padding:13px 18px;border-radius:var(--radius);cursor:pointer;text-decoration:none;transition:background .2s,color .2s,border-color .2s}
