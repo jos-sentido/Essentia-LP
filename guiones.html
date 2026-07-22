@@ -26,7 +26,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Josefin Sans',sans-serif;color:var(--texto);background:var(--crema);line-height:1.65;font-weight:300}
+body{font-family:'Josefin Sans',sans-serif;color:var(--texto);background:var(--crema);line-height:1.65;font-weight:300;overflow-x:hidden}
 h1,h2,h3{font-family:'Cinzel',serif;font-weight:500;line-height:1.2;color:var(--negro)}
 img{max-width:100%;display:block}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
@@ -38,6 +38,13 @@ img{max-width:100%;display:block}
 .nav__right{display:flex;align-items:center;gap:16px}
 .nav__sentido{height:30px;width:auto}
 .chip{display:inline-block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--olivo);color:var(--olivo-d);padding:6px 12px;border-radius:2px;white-space:nowrap}
+@media(max-width:640px){
+  .nav__in{padding:10px 14px;gap:10px}
+  .nav__logo{height:26px}
+  .nav__right{gap:10px}
+  .nav__sentido{height:22px}
+  .chip{font-size:.58rem;letter-spacing:.1em;padding:5px 8px;white-space:normal;text-align:center;max-width:180px}
+}
 
 /* hero */
 .hero{background:var(--negro);color:#fff;position:relative;overflow:hidden}
