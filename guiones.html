@@ -80,6 +80,8 @@ section{padding:72px 0}
 .mapa h3{color:#fff;font-size:.95rem;margin-bottom:8px}
 .mapa p{font-size:.8rem;color:#d8d2c6;line-height:1.55}
 .tabs-hint{margin-top:18px;font-size:.82rem;color:var(--olivo-d);font-style:italic}
+.hint-mobile{display:none}
+@media(max-width:640px){.hint-desktop{display:none}.hint-mobile{display:inline}.tabs-hint{margin-top:12px}}
 .guion-nav{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-top:6px}
 .gnav__btn{font-family:'Josefin Sans',sans-serif;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;background:#fff;border:1px solid var(--linea);color:var(--texto);padding:13px 18px;border-radius:var(--radius);cursor:pointer;text-decoration:none;transition:background .2s,color .2s,border-color .2s}
 .gnav__btn:hover{background:var(--negro);color:#fff;border-color:var(--negro)}
@@ -189,7 +191,7 @@ footer img{height:34px;width:auto;filter:invert(1);opacity:.85}
       <a href="#g4"><span class="num">Guión 04</span><h3>Proximidad · Renta a patrimonio</h3><p>Frío geolocalizado · Ya renta en la zona. Convertimos su renta en un depa propio.</p></a>
       <a href="#g5"><span class="num">Guión 05</span><h3>Nuevo esquema de pago</h3><p>Transversal · Frío y remarketing · La noticia que abre (y reabre) la conversación: de $250 mil a $50 mil al mes.</p></a>
     </div>
-    <p class="tabs-hint">Haz clic en cualquier tarjeta para ver ese guión completo aquí abajo — se muestra uno a la vez.</p>
+    <p class="tabs-hint"><span class="hint-desktop">Haz clic en cualquier tarjeta para ver ese guión completo aquí abajo — se muestra uno a la vez.</span><span class="hint-mobile">Toca el menú para elegir el guión que quieres leer — se muestra uno a la vez.</span></p>
   </div>
 </section>
 
