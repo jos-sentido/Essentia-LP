@@ -33,7 +33,7 @@
 <section class="hero" id="top">
   <div class="hero__media">
     <img src="assets/img/hero-lifestyle.webp" alt="Estancia del departamento muestra de Essentia Country con vista a Country Club" fetchpriority="high" data-ab="a" />
-    <img src="assets/img/hero-exterior.webp" alt="Torre Essentia Country sobre la colonia Country Club, Guadalajara" loading="lazy" data-ab="b" hidden />
+    <img src="assets/img/hero-b.webp" alt="Toma aérea de la torre de Essentia Country con el skyline de Guadalajara" loading="lazy" data-ab="b" hidden />
     <div class="hero__scrim"></div>
   </div>
   <div class="hero__inner">
@@ -42,14 +42,14 @@
     <p class="eyebrow" data-ab="b" hidden>Preventa · Inversión en Country Club</p>
 
     <h1 class="hero__h1" data-ab="a">El Country Club,<br>a la altura de tu vida.</h1>
-    <h1 class="hero__h1" data-ab="b" hidden>Invierte donde la plusvalía<br>ya está probada.</h1>
+    <h1 class="hero__h1" data-ab="b" hidden>Invierte donde la demanda<br>sostiene el valor.</h1>
 
     <p class="hero__sub" data-ab="a">Departamentos de 1 a 3 recámaras en el corazón de la colonia más consolidada de Guadalajara. Desde <strong>$6.4&nbsp;MDP</strong>.</p>
-    <p class="hero__sub" data-ab="b" hidden>Departamentos en Country Club desde <strong>$6.4&nbsp;MDP</strong>. Renta estimada ~$250/m²·mes en una de las zonas de mayor demanda de Guadalajara.</p>
+    <p class="hero__sub" data-ab="b" hidden>Una de las zonas de mayor demanda de Guadalajara.</p>
 
     <div class="hero__cta">
       <a href="#form" class="btn btn--primary" data-cta="hero" data-ab="a">Agenda tu visita</a>
-      <a href="#calculadora" class="btn btn--primary" data-cta="hero" data-ab="b" hidden>Calcular mi inversión</a>
+      <a href="#cotizador" class="btn btn--primary" data-cta="hero" data-ab="b" hidden>Calcular mi inversión</a>
       <a href="#tipologias" class="btn btn--outline" data-ab="a">Ver departamentos</a>
       <a href="#caso" class="btn btn--outline" data-ab="b" hidden>Ver el rendimiento</a>
     </div>
@@ -62,55 +62,24 @@
 <section class="section section--cream only-b" id="caso">
   <div class="wrap">
     <p class="kicker">El caso de inversión</p>
-    <h2 class="h2">Los números, antes que las palabras.</h2>
-    <p class="lead">Country Club no promete plusvalía: ya la demostró. Esto es lo que respalda tu inversión.</p>
+    <h2 class="h2">Si buscas invertir en Guadalajara, esto te interesa.</h2>
+    <p class="lead">Ubicado en Country Club, una de las zonas con mayor estabilidad y demanda.</p>
 
     <div class="caso__stats">
-      <div class="caso__stat"><span class="caso__n">8–15%</span><span class="caso__l">Plusvalía anual estimada en corredores premium de la ZMG</span></div>
-      <div class="caso__stat"><span class="caso__n">~$250<small>/m²·mes</small></span><span class="caso__l">Renta promedio en la zona Country Club</span></div>
-      <div class="caso__stat"><span class="caso__n">~3.9%</span><span class="caso__l">Rendimiento bruto anual solo por renta</span></div>
+      <div class="caso__stat"><span class="caso__n">12%</span><span class="caso__l">Plusvalía anual proyectada</span></div>
+      <div class="caso__stat"><span class="caso__n">$76 mil<small>/mes</small></span><span class="caso__l">Hasta esta cifra en ingresos por renta de corta estancia</span></div>
+      <div class="caso__stat"><span class="caso__n">26%</span><span class="caso__l">ROI anual estimado + rentas</span></div>
     </div>
 
     <div class="caso__return">
       <p class="caso__return-title">Retorno total potencial</p>
       <div class="caso__bar">
-        <span class="caso__seg caso__seg--renta" style="flex:3.9"><em>Renta</em><b>~3.9%</b></span>
-        <span class="caso__seg caso__seg--plus" style="flex:11"><em>Plusvalía</em><b>8–15%</b></span>
+        <span class="caso__seg caso__seg--renta" style="flex:14"><em>Renta</em><b>14%</b></span>
+        <span class="caso__seg caso__seg--plus" style="flex:12"><em>Plusvalía</em><b>12%</b></span>
       </div>
-      <p class="caso__total">= <strong>12–19% anual</strong> combinando renta y plusvalía estimada</p>
+      <p class="caso__total">= <strong>26% anual</strong> combinando renta y plusvalía estimada</p>
     </div>
     <p class="disclaimer">Cifras estimadas con datos públicos de mercado (jun 2026). No constituyen garantía de rendimiento.</p>
-  </div>
-</section>
-
-<!-- ░░ CALCULADORA (solo Variante B) ░░ -->
-<section class="section section--dark only-b" id="calculadora">
-  <div class="wrap">
-    <p class="kicker kicker--light">Calculadora</p>
-    <h2 class="h2 h2--light">Haz tus números.</h2>
-    <p class="lead lead--light">Elige una tipología y mira cómo se estructura tu inversión.</p>
-
-    <div class="calc">
-      <div class="calc__tabs" id="calc-tabs" role="tablist">
-        <button class="calc__tab is-sel" data-unit="0" role="tab">1 recámara</button>
-        <button class="calc__tab" data-unit="1" role="tab">2 recámaras</button>
-        <button class="calc__tab" data-unit="2" role="tab">2 rec · amplio</button>
-        <button class="calc__tab" data-unit="3" role="tab">3 recámaras</button>
-      </div>
-
-      <div class="calc__grid">
-        <div class="calc__row calc__row--head">
-          <span class="calc__k">Precio desde</span><span class="calc__v" id="calc-precio">—</span>
-        </div>
-        <div class="calc__row"><span class="calc__k">Enganche <small>30%</small></span><span class="calc__v" id="calc-enganche">—</span></div>
-        <div class="calc__row"><span class="calc__k">Mensualidad <small>40% en 18 MSI</small></span><span class="calc__v" id="calc-msi">—</span></div>
-        <div class="calc__row"><span class="calc__k">Contra entrega <small>30%</small></span><span class="calc__v" id="calc-entrega">—</span></div>
-        <div class="calc__row calc__row--accent"><span class="calc__k">Renta estimada <small>/mes</small></span><span class="calc__v" id="calc-renta">—</span></div>
-        <div class="calc__row calc__row--accent"><span class="calc__k">Valor proyectado <small>a 5 años · 10%/año</small></span><span class="calc__v" id="calc-valor">—</span></div>
-      </div>
-      <a href="#form" class="btn btn--primary calc__cta" data-cta="calc">Quiero el desglose con un asesor</a>
-      <p class="disclaimer disclaimer--light">Estimaciones con base en precios "desde" y renta promedio de zona ($250/m²·mes). No es una oferta vinculante; un asesor confirma precios y condiciones vigentes.</p>
-    </div>
   </div>
 </section>
 
@@ -155,15 +124,15 @@
   <div class="wrap proof__grid">
     <div class="proof__media">
       <img src="assets/img/interior-estancia.webp" alt="Estancia del departamento muestra de Essentia Country: sala, comedor y cocina integrados" loading="lazy" data-ab="a" />
-      <img src="assets/img/exterior-country.webp" alt="Torre de Essentia Country en Country Club, Guadalajara" loading="lazy" data-ab="b" hidden />
+      <img src="assets/img/avance-podio.webp" alt="Toma aérea del podio y la plaza comercial de Essentia Country, con la base de la torre" loading="lazy" data-ab="b" hidden />
     </div>
     <div class="proof__copy">
       <p class="kicker kicker--light" data-ab="a">Estilo de vida</p>
       <p class="kicker kicker--light" data-ab="b" hidden>Avance real</p>
       <h2 class="h2 h2--light" data-ab="a">Diseñado para vivirse.</h2>
-      <h2 class="h2 h2--light" data-ab="b" hidden>No es un render.<br>El edificio ya existe.</h2>
+      <h2 class="h2 h2--light" data-ab="b" hidden>No es un render.<br>Es avance real.</h2>
       <p class="lead lead--light" data-ab="a">Espacios amplios, luz natural y acabados de alto nivel en una de las zonas más exclusivas de Guadalajara. Ven a conocerlo en persona.</p>
-      <p class="lead lead--light" data-ab="b" hidden>La torre ya está construida. Ven a verlo con tus propios ojos antes de decidir.</p>
+      <p class="lead lead--light" data-ab="b" hidden>La obra tiene un avance importante y la plaza comercial ya opera. Ven a conocer el proyecto en persona antes de decidir.</p>
     </div>
   </div>
 </section>
@@ -179,35 +148,31 @@
     <div class="amen">
       <article class="amen__card">
         <img src="assets/img/amenity-gym.webp" alt="Gimnasio equipado de Essentia Country" loading="lazy" />
-        <div class="amen__cap"><h3>Gimnasio</h3><p>Equipamiento de primer nivel para entrenar cada día sin salir de casa.</p></div>
+        <div class="amen__cap"><h3>Gimnasio</h3><p data-ab="a">Equipamiento de primer nivel para entrenar cada día sin salir de casa.</p><p data-ab="b" hidden>De las amenidades que más impulsan la renta y la retención.</p></div>
       </article>
       <article class="amen__card">
         <img src="assets/img/amenity-alberca.webp" alt="Alberca de Essentia Country" loading="lazy" />
-        <div class="amen__cap"><h3>Alberca</h3><p>La sensación de un resort, todos los días y a unos pasos de tu puerta.</p></div>
+        <div class="amen__cap"><h3>Alberca</h3><p data-ab="a">La sensación de un resort, todos los días y a unos pasos de tu puerta.</p><p data-ab="b" hidden>Una alberca tipo resort eleva la tarifa y la ocupación en renta.</p></div>
       </article>
       <article class="amen__card">
         <img src="assets/img/amenity-spa.webp" alt="Spa de Essentia Country" loading="lazy" />
-        <div class="amen__cap"><h3>Spa</h3><p>Un espacio de bienestar reservado para tu descanso y autocuidado.</p></div>
+        <div class="amen__cap"><h3>Spa</h3><p data-ab="a">Un espacio de bienestar reservado para tu descanso y autocuidado.</p><p data-ab="b" hidden>El spa diferencia al edificio y sostiene tarifas de renta premium.</p></div>
       </article>
       <article class="amen__card">
         <img src="assets/img/amenity-bar.webp" alt="Bar de Essentia Country" loading="lazy" />
-        <div class="amen__cap"><h3>Bar</h3><p>El lugar ideal para recibir y convivir con estilo, sin salir del edificio.</p></div>
-      </article>
-      <article class="amen__card">
-        <img src="assets/img/amenity-jardines.webp" alt="Jardines de Essentia Country" loading="lazy" />
-        <div class="amen__cap"><h3>Jardines</h3><p>Áreas verdes que rodean el desarrollo y acercan la naturaleza a tu día.</p></div>
+        <div class="amen__cap"><h3>Bar</h3><p data-ab="a">El lugar ideal para recibir y convivir con estilo, sin salir del edificio.</p><p data-ab="b" hidden>Espacios sociales que suman experiencia y valor percibido a cada unidad.</p></div>
       </article>
       <article class="amen__card">
         <img src="assets/img/amenity-camastros.webp" alt="Área de camastros de Essentia Country" loading="lazy" />
-        <div class="amen__cap"><h3>Área de camastros</h3><p>Relájate al aire libre y disfruta del sol a tu propio ritmo.</p></div>
+        <div class="amen__cap"><h3>Área de camastros</h3><p data-ab="a">Relájate al aire libre y disfruta del sol a tu propio ritmo.</p><p data-ab="b" hidden>Áreas de descanso al aire libre que refuerzan el atractivo en renta.</p></div>
       </article>
       <article class="amen__card">
         <img src="assets/img/amenity-elevadores.webp" alt="Elevadores de alta velocidad de Essentia Country" loading="lazy" />
-        <div class="amen__cap"><h3>Elevadores de alta velocidad</h3><p>Llega a tu piso en segundos, sin esperas.</p></div>
+        <div class="amen__cap"><h3>Elevadores de alta velocidad</h3><p data-ab="a">Llega a tu piso en segundos, sin esperas.</p><p data-ab="b" hidden>Servicios de edificio que sostienen la calidad y el valor de la propiedad.</p></div>
       </article>
       <article class="amen__card">
         <img src="assets/img/amenity-seguridad.webp" alt="Seguridad y vigilancia 24h en Essentia Country" loading="lazy" />
-        <div class="amen__cap"><h3>Seguridad 24h</h3><p>Vigilancia y control de acceso las 24 horas, para tu tranquilidad.</p></div>
+        <div class="amen__cap"><h3>Seguridad 24h</h3><p data-ab="a">Vigilancia y control de acceso las 24 horas, para tu tranquilidad.</p><p data-ab="b" hidden>Seguridad y control de acceso 24/7: un factor decisivo para rentar de alto perfil.</p></div>
       </article>
     </div>
   </div>
@@ -218,7 +183,7 @@
   <div class="wrap">
     <p class="kicker kicker--light">El departamento</p>
     <h2 class="h2 h2--light" data-ab="a">Así se vive adentro.</h2>
-    <h2 class="h2 h2--light" data-ab="b" hidden>Acabados que sostienen el valor.</h2>
+    <h2 class="h2 h2--light" data-ab="b" hidden>Arquitectura que trasciende.</h2>
     <p class="lead lead--light" data-ab="a">Espacios amplios, luz natural y vistas a la ciudad desde cada ambiente. Conoce el departamento muestra.</p>
     <p class="lead lead--light" data-ab="b" hidden>Diseño contemporáneo, acabados de alto nivel y ventanales de piso a techo: lo que hace que una unidad rente mejor y conserve su valor.</p>
 
@@ -282,12 +247,15 @@
   </div>
 </section>
 
-<!-- ░░ COTIZADOR (Variante A) ░░ -->
-<section class="section section--light" id="cotizador" data-ab="a">
+<!-- ░░ COTIZADOR (A y B) ░░ -->
+<section class="section section--light" id="cotizador">
   <div class="wrap">
-    <p class="kicker">Precios</p>
-    <h2 class="h2">Elige tu depa y cómo pagarlo.</h2>
-    <p class="lead">Tipología, precio y plan de pago en un solo lugar. Un asesor confirma disponibilidad y condiciones vigentes.</p>
+    <p class="kicker" data-ab="a">Precios</p>
+    <p class="kicker" data-ab="b" hidden>Precios y esquemas</p>
+    <h2 class="h2" data-ab="a">Elige tu depa y cómo pagarlo.</h2>
+    <h2 class="h2" data-ab="b" hidden>Precio y forma de pago.</h2>
+    <p class="lead" data-ab="a">Tipología, precio y plan de pago en un solo lugar. Un asesor confirma disponibilidad y condiciones vigentes.</p>
+    <p class="lead" data-ab="b" hidden>Elige la tipología y compara los tres esquemas. Un asesor confirma disponibilidad y condiciones vigentes.</p>
 
     <div class="cotz">
       <div class="cotz__tabs" id="cot-tabs" role="tablist"></div>
@@ -308,15 +276,12 @@
       <p class="kicker">Desarrollador</p>
       <h2 class="h2" data-ab="a">Península Lifestyle Properties.</h2>
       <h2 class="h2" data-ab="b" hidden>Quien construye, también respalda.</h2>
-      <p class="lead" data-ab="a">Detrás de Essentia está Península, firma con desarrollos residenciales y de lujo en todo México.</p>
-      <p class="lead" data-ab="b" hidden>Tu inversión está respaldada por Península, firma con obra entregada en todo México — no un proyecto de un solo desarrollo.</p>
-      <ul class="dev__list">
-        <li><strong>Amancay</strong> — Nuevo Vallarta, Nayarit</li>
-        <li><strong>Distrito Chapultepec</strong> — Americana, Guadalajara</li>
-        <li><strong>Ocean One</strong> — Punta Diamante, Acapulco</li>
-      </ul>
-      <p class="dev__track">Con proyectos en Guadalajara, Nuevo Vallarta, Acapulco e Ixtapa, Península desarrolla espacios residenciales y de lujo en México.</p>
-      <p class="dev__track" data-ab="b" hidden>El edificio ya está construido: tu inversión no depende de que arranque la obra.</p>
+      <p class="lead" data-ab="a">Detrás de Essentia está Península Lifestyle Properties: 24 años de experiencia y 51 desarrollos terminados en los principales estados de la República Mexicana.</p>
+      <p class="lead" data-ab="b" hidden>Tu inversión está respaldada por Península Lifestyle Properties: 24 años de experiencia y 51 desarrollos terminados en los principales estados de la República Mexicana.</p>
+      <div class="dev__stats">
+        <div class="dev__stat"><span class="dev__n">24</span><span class="dev__l">Años de experiencia</span></div>
+        <div class="dev__stat"><span class="dev__n">51</span><span class="dev__l">Desarrollos terminados en México</span></div>
+      </div>
     </div>
     <div class="dev__media">
       <img src="assets/img/torre-aerea.webp" alt="Toma aérea de la torre de Essentia Country en Country Club, Guadalajara" loading="lazy" />
@@ -329,7 +294,7 @@
   <div class="wrap form-wrap">
     <p class="kicker kicker--light">Agenda</p>
     <h2 class="h2 h2--light" data-ab="a">Conoce Essentia en persona.</h2>
-    <h2 class="h2 h2--light" data-ab="b" hidden>Haz tus números con un asesor.</h2>
+    <h2 class="h2 h2--light" data-ab="b" hidden>Agenda tu visita personalizada.</h2>
 
     <form id="lead-form" class="cform" novalidate>
       <div class="cform__progress"><span class="cform__bar" id="bar"></span></div>

@@ -173,6 +173,11 @@ h1,h2,h3,.eyebrow,.kicker{font-family:'Cinzel',serif}
 .dev__list{list-style:none;margin:24px 0;display:grid;gap:12px}
 .dev__list li{font-size:1rem;color:var(--texto);padding-left:18px;border-left:2px solid var(--olivo)}
 .dev__track{font-size:.92rem;color:var(--texto-2);font-style:italic}
+.dev__stats{display:flex;gap:40px;margin:26px 0 4px}
+.dev__stat{display:flex;flex-direction:column}
+.dev__n{font-family:'Cinzel',serif;font-size:2.6rem;font-weight:600;color:var(--olivo-d);line-height:1}
+.dev__l{font-size:.86rem;color:var(--texto-2);margin-top:6px;max-width:16ch}
+.dev__logo{height:44px;width:auto;margin-top:24px}
 .dev__media img{width:100%;border-radius:var(--radius);aspect-ratio:4/5;object-fit:cover}
 @media(min-width:860px){.dev{grid-template-columns:1fr 1fr}}
 
