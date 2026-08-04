@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#574545" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="image" href="assets/img/hero-exterior.webp" fetchpriority="high" />
+<link rel="preload" as="image" href="assets/img/hero-lifestyle.webp" fetchpriority="high" />
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 <!-- ===== TRACKING (placeholders — completar en Fase 2) =====
@@ -32,7 +32,8 @@
 <!-- ░░ HERO ░░ -->
 <section class="hero" id="top">
   <div class="hero__media">
-    <img src="assets/img/hero-exterior.webp" alt="Torre Essentia Country sobre la colonia Country Club, Guadalajara" />
+    <img src="assets/img/hero-lifestyle.webp" alt="Estancia del departamento muestra de Essentia Country con vista a Country Club" fetchpriority="high" data-ab="a" />
+    <img src="assets/img/hero-exterior.webp" alt="Torre Essentia Country sobre la colonia Country Club, Guadalajara" loading="lazy" data-ab="b" hidden />
     <div class="hero__scrim"></div>
   </div>
   <div class="hero__inner">
@@ -117,9 +118,9 @@
 <section class="section section--light" id="ubicacion">
   <div class="wrap">
     <p class="kicker">Ubicación</p>
-    <h2 class="h2" data-ab="a">No vives lejos.<br>Vives en el centro de todo.</h2>
+    <h2 class="h2" data-ab="a">Así se siente vivir<br>en Country Club.</h2>
     <h2 class="h2" data-ab="b" hidden>A minutos de todo lo<br>que mueve Guadalajara.</h2>
-    <p class="lead" data-ab="a">Country Club es de las pocas direcciones en Guadalajara que no necesita presentación: trayectoria, plusvalía y vida a un paso de la Zona Financiera.</p>
+    <p class="lead" data-ab="a">Ubicado en Country Club, una de las zonas con mayor estabilidad, plusvalía y demanda. Cerca de la Zona Financiera.</p>
     <p class="lead" data-ab="b" hidden>La ubicación es el primer driver de plusvalía. Essentia está en el corazón del Country, a un paso de la Zona Financiera y los corredores de mayor demanda.</p>
 
     <ul class="poi">
@@ -129,6 +130,16 @@
       <li><svg viewBox="0 0 24 24" class="ic"><path d="M2 12h4l2-6 4 14 3-9 2 3h5"/></svg>Av. López Mateos y Av. Américas — conectividad total</li>
       <li><svg viewBox="0 0 24 24" class="ic"><path d="M12 3c4 4 6 7 6 10a6 6 0 0 1-12 0c0-3 2-6 6-10Z"/></svg>Bosque Colomos / Club Atlas Colomos — áreas verdes</li>
     </ul>
+
+    <div class="map">
+      <iframe
+        class="map__frame"
+        title="Ubicación de Essentia Country en Country Club, Guadalajara"
+        src="https://maps.google.com/maps?q=Essentia%20Country%2C%20Av.%20Coronel%20Jorge%20%C3%81lvarez%20del%20Castillo%201433%2C%20Country%20Club%2C%2044610%20Guadalajara%2C%20Jal.&amp;z=15&amp;output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
+    </div>
 
     <div class="stats" data-ab="a">
       <div class="stat"><span class="stat__n">8–15%</span><span class="stat__l">Plusvalía anual estimada en corredores premium de la ZMG</span></div>
@@ -143,13 +154,16 @@
 <section class="section section--dark proof">
   <div class="wrap proof__grid">
     <div class="proof__media">
-      <img src="assets/img/exterior-country.webp" alt="Avance real de obra de Essentia Country, marzo 2025" loading="lazy" />
+      <img src="assets/img/interior-estancia.webp" alt="Estancia del departamento muestra de Essentia Country: sala, comedor y cocina integrados" loading="lazy" data-ab="a" />
+      <img src="assets/img/exterior-country.webp" alt="Torre de Essentia Country en Country Club, Guadalajara" loading="lazy" data-ab="b" hidden />
     </div>
     <div class="proof__copy">
-      <p class="kicker kicker--light">Avance real</p>
-      <h2 class="h2 h2--light">No es un render.<br>El edificio ya existe.</h2>
-      <p class="lead lead--light">La torre está construida y las amenidades terminadas. Ven a verlo con tus propios ojos antes de decidir.</p>
-      <p class="proof__pill">Obra real, documentada con fotografías · agenda una visita para conocer el estado actual.</p>
+      <p class="kicker kicker--light" data-ab="a">Estilo de vida</p>
+      <p class="kicker kicker--light" data-ab="b" hidden>Avance real</p>
+      <h2 class="h2 h2--light" data-ab="a">Diseñado para vivirse.</h2>
+      <h2 class="h2 h2--light" data-ab="b" hidden>No es un render.<br>El edificio ya existe.</h2>
+      <p class="lead lead--light" data-ab="a">Espacios amplios, luz natural y acabados de alto nivel en una de las zonas más exclusivas de Guadalajara. Ven a conocerlo en persona.</p>
+      <p class="lead lead--light" data-ab="b" hidden>La torre ya está construida. Ven a verlo con tus propios ojos antes de decidir.</p>
     </div>
   </div>
 </section>
@@ -165,35 +179,35 @@
     <div class="amen">
       <article class="amen__card">
         <img src="assets/img/amenity-gym.webp" alt="Gimnasio equipado de Essentia Country" loading="lazy" />
-        <div class="amen__cap"><h3>Gimnasio</h3><p>Entrena con la ciudad a tus pies.</p></div>
+        <div class="amen__cap"><h3>Gimnasio</h3><p>Equipamiento de primer nivel para entrenar cada día sin salir de casa.</p></div>
       </article>
       <article class="amen__card">
         <img src="assets/img/amenity-alberca.webp" alt="Alberca de Essentia Country" loading="lazy" />
-        <div class="amen__cap"><h3>Alberca</h3><p>Tu pausa, a unos pasos de tu puerta.</p></div>
+        <div class="amen__cap"><h3>Alberca</h3><p>La sensación de un resort, todos los días y a unos pasos de tu puerta.</p></div>
       </article>
       <article class="amen__card">
         <img src="assets/img/amenity-spa.webp" alt="Spa de Essentia Country" loading="lazy" />
-        <div class="amen__cap"><h3>Spa</h3><p>El descanso también es lujo.</p></div>
+        <div class="amen__cap"><h3>Spa</h3><p>Un espacio de bienestar reservado para tu descanso y autocuidado.</p></div>
       </article>
       <article class="amen__card">
         <img src="assets/img/amenity-bar.webp" alt="Bar de Essentia Country" loading="lazy" />
-        <div class="amen__cap"><h3>Bar</h3><p>Recibe sin salir de casa.</p></div>
+        <div class="amen__cap"><h3>Bar</h3><p>El lugar ideal para recibir y convivir con estilo, sin salir del edificio.</p></div>
       </article>
       <article class="amen__card">
         <img src="assets/img/amenity-jardines.webp" alt="Jardines de Essentia Country" loading="lazy" />
-        <div class="amen__cap"><h3>Jardines</h3><p>Verde que rodea, no que se visita.</p></div>
+        <div class="amen__cap"><h3>Jardines</h3><p>Áreas verdes que rodean el desarrollo y acercan la naturaleza a tu día.</p></div>
       </article>
       <article class="amen__card">
         <img src="assets/img/amenity-camastros.webp" alt="Área de camastros de Essentia Country" loading="lazy" />
-        <div class="amen__cap"><h3>Área de camastros</h3><p>El sol, a tu ritmo.</p></div>
+        <div class="amen__cap"><h3>Área de camastros</h3><p>Relájate al aire libre y disfruta del sol a tu propio ritmo.</p></div>
       </article>
       <article class="amen__card">
         <img src="assets/img/amenity-elevadores.webp" alt="Elevadores de alta velocidad de Essentia Country" loading="lazy" />
-        <div class="amen__cap"><h3>Elevadores de alta velocidad</h3><p>Tu tiempo, respetado.</p></div>
+        <div class="amen__cap"><h3>Elevadores de alta velocidad</h3><p>Llega a tu piso en segundos, sin esperas.</p></div>
       </article>
       <article class="amen__card">
         <img src="assets/img/amenity-seguridad.webp" alt="Seguridad y vigilancia 24h en Essentia Country" loading="lazy" />
-        <div class="amen__cap"><h3>Seguridad 24h</h3><p>Tranquilidad que no se nota, pero está.</p></div>
+        <div class="amen__cap"><h3>Seguridad 24h</h3><p>Vigilancia y control de acceso las 24 horas, para tu tranquilidad.</p></div>
       </article>
     </div>
   </div>
@@ -241,34 +255,49 @@
       <article class="typo__card">
         <div class="typo__top"><span class="typo__rec">1 recámara</span><span class="typo__m2">83.81 m²</span></div>
         <ul class="typo__feat"><li>1½ baños</li><li>Sala · Comedor · Cocina</li><li>Cuarto de lavado</li></ul>
-        <div class="typo__foot"><span class="typo__from">desde</span><span class="typo__price">$6.4 <small>MDP</small></span></div>
         <p class="typo__roi" data-ab="b" hidden>Renta estimada ~$20,950/mes</p>
         <a href="#form" class="btn btn--outline btn--sm" data-cta="typo" data-tipo="1 recámara">Solicitar información</a>
       </article>
       <article class="typo__card">
-        <div class="typo__top"><span class="typo__rec">2 recámaras</span><span class="typo__m2">85.23 m²</span></div>
+        <div class="typo__top"><span class="typo__rec">2 recámaras</span><span class="typo__m2">98.00 m²</span></div>
         <ul class="typo__feat"><li>2 baños</li><li>Sala · Comedor · Cocina</li><li>Cuarto de lavado</li></ul>
-        <div class="typo__foot"><span class="typo__from">desde</span><span class="typo__price">$7.3 <small>MDP</small></span></div>
         <p class="typo__roi" data-ab="b" hidden>Renta estimada ~$21,300/mes</p>
         <a href="#form" class="btn btn--outline btn--sm" data-cta="typo" data-tipo="2 recámaras">Solicitar información</a>
       </article>
       <article class="typo__card typo__card--feat">
         <div class="typo__top"><span class="typo__rec">2 recámaras · amplio</span><span class="typo__m2">130.89 m²</span></div>
         <ul class="typo__feat"><li>2 baños</li><li>Sala · Comedor · Cocina</li><li>Cuarto de lavado</li></ul>
-        <div class="typo__foot"><span class="typo__from">desde</span><span class="typo__price">$7.3 <small>MDP</small></span></div>
         <p class="typo__roi" data-ab="b" hidden>Renta estimada ~$32,700/mes</p>
-        <a href="#form" class="btn btn--primary btn--sm" data-cta="typo" data-tipo="2 recámaras">Solicitar información</a>
+        <a href="#form" class="btn btn--outline btn--sm" data-cta="typo" data-tipo="2 recámaras">Solicitar información</a>
       </article>
       <article class="typo__card">
         <div class="typo__top"><span class="typo__rec">3 recámaras</span><span class="typo__m2">152.62 m²</span></div>
         <ul class="typo__feat"><li>3 baños</li><li>Sala · Comedor · Cocina</li><li>Cuarto de lavado</li></ul>
-        <div class="typo__foot"><span class="typo__from">desde</span><span class="typo__price">$10.2 <small>MDP</small></span></div>
         <p class="typo__roi" data-ab="b" hidden>Renta estimada ~$38,000/mes</p>
         <a href="#form" class="btn btn--outline btn--sm" data-cta="typo" data-tipo="3 recámaras">Solicitar información</a>
       </article>
     </div>
     <p class="typo__pay">Enganche desde <strong>30%</strong> · hasta <strong>18 meses sin intereses</strong> · <strong>30%</strong> contra entrega</p>
     <p class="disclaimer" data-ab="b" hidden>Renta estimada = m² × $250 (promedio de zona). Cifra referencial, no garantizada.</p>
+  </div>
+</section>
+
+<!-- ░░ COTIZADOR (Variante A) ░░ -->
+<section class="section section--light" id="cotizador" data-ab="a">
+  <div class="wrap">
+    <p class="kicker">Precios</p>
+    <h2 class="h2">Elige tu depa y cómo pagarlo.</h2>
+    <p class="lead">Tipología, precio y plan de pago en un solo lugar. Un asesor confirma disponibilidad y condiciones vigentes.</p>
+
+    <div class="cotz">
+      <div class="cotz__tabs" id="cot-tabs" role="tablist"></div>
+      <div class="cotz__schemes" id="cot-schemes"></div>
+
+      <p class="cotz__promo">★ <b>Promoción:</b> paga solo <b>$50,000/mes</b> durante la obra; el <b>monto contra entrega</b> lo cierras con tu <b>crédito hipotecario</b> al escriturar.</p>
+
+      <a href="#form" class="btn btn--primary cotz__cta" data-cta="cotizador">Solicitar cotización</a>
+      <p class="disclaimer" id="cot-fine"></p>
+    </div>
   </div>
 </section>
 
@@ -290,7 +319,7 @@
       <p class="dev__track" data-ab="b" hidden>El edificio ya está construido: tu inversión no depende de que arranque la obra.</p>
     </div>
     <div class="dev__media">
-      <img src="assets/img/gym-wide.webp" alt="Gimnasio Technogym terminado en Essentia Country" loading="lazy" />
+      <img src="assets/img/torre-aerea.webp" alt="Toma aérea de la torre de Essentia Country en Country Club, Guadalajara" loading="lazy" />
     </div>
   </div>
 </section>

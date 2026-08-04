@@ -81,6 +81,63 @@
     setUnit(0);
   })();
 
+  // ---- Cotizador (Variante A) ----
+  (function () {
+    var tabsEl = document.getElementById('cot-tabs');
+    if (!tabsEl) return;
+    var schemesEl = document.getElementById('cot-schemes');
+    var fineEl = document.getElementById('cot-fine');
+    var MESES = 18, MP = 50000;
+    var T = [
+      { id: '1r', n: '1 Recámara', m2: 83.78, contado: 5110580, tradicional: 5563746, promo: 5907328 },
+      { id: '2r', n: '2 Recámaras', m2: 98.00, contado: 6605200, tradicional: 7190848, promo: 7700840 },
+      { id: '2ra', n: '2 Rec Amplio', m2: 130.47, contado: 7919529, tradicional: 8621719, promo: 9279026 },
+      { id: '3r', n: '3 Recámaras', m2: 152.63, contado: 9264641, tradicional: 10086096, promo: 10893203 }
+    ];
+    var mdp = function (v) { return '$' + (v / 1e6).toFixed(2) + ' MDP'; };
+    var money = function (v) { return '$' + Math.round(v).toLocaleString('es-MX'); };
+    var sel = '1r';
+    function tabs() {
+      tabsEl.innerHTML = T.map(function (t) {
+        return '<button type="button" class="cotz__tab' + (t.id === sel ? ' is-sel' : '') + '" role="tab" data-id="' + t.id + '">' +
+          '<span class="cotz__tn">' + t.n + '</span><span class="cotz__tm">' + t.m2.toFixed(2) + ' m²</span>' +
+          '<span class="cotz__td">desde ' + mdp(t.contado) + '</span></button>';
+      }).join('');
+    }
+    function cards() {
+      var t = T.filter(function (x) { return x.id === sel; })[0];
+      var men = t.tradicional * 0.7 / 18, engT = t.tradicional * 0.30, engP = t.promo * 0.30;
+      var escr = t.promo - engP - MP * MESES;
+      schemesEl.innerHTML =
+        '<div class="cotz__sch"><div class="cotz__sn">Contado</div>' +
+        '<div class="cotz__pbig">' + mdp(t.contado) + '</div><div class="cotz__plabel">Precio de contado</div>' +
+        '<div class="cotz__kdiv"></div>' +
+        '<div class="cotz__hint">Un solo pago, sin mensualidades. El precio más bajo.</div></div>' +
+
+        '<div class="cotz__sch"><div class="cotz__sn">Tradicional</div>' +
+        '<div class="cotz__pbig">' + mdp(t.tradicional) + '</div><div class="cotz__plabel">Precio total</div>' +
+        '<div class="cotz__kdiv"></div><div class="cotz__rows">' +
+          '<div class="cotz__r"><span>Enganche 30%</span><b>' + mdp(engT) + '</b></div>' +
+          '<div class="cotz__r"><span>Mensualidad ×18</span><b>' + money(men) + '</b></div>' +
+        '</div></div>' +
+
+        '<div class="cotz__sch cotz__sch--promo"><span class="cotz__badge">$50,000/mes</span><div class="cotz__sn">Promoción</div>' +
+        '<div class="cotz__pbig">' + mdp(t.promo) + '</div><div class="cotz__plabel">Precio total</div>' +
+        '<div class="cotz__kdiv"></div><div class="cotz__rows">' +
+          '<div class="cotz__r"><span>Enganche 30%</span><b>' + mdp(engP) + '</b></div>' +
+          '<div class="cotz__r hot"><span>Mensualidad ×18</span><b>' + money(MP) + '</b></div>' +
+          '<div class="cotz__r hot"><span>Contra entrega</span><b>' + mdp(escr) + '</b></div>' +
+        '</div><div class="cotz__hint">El monto contra entrega se paga con tu crédito hipotecario.</div></div>';
+      fineEl.textContent = 'Precios "desde" por tipología, sujetos a disponibilidad. No es una oferta vinculante.';
+    }
+    tabsEl.addEventListener('click', function (e) {
+      var b = e.target.closest('.cotz__tab');
+      if (!b) return;
+      sel = b.dataset.id; tabs(); cards();
+    });
+    tabs(); cards();
+  })();
+
   // ---- Formulario multi-paso ----
   var form = document.getElementById('lead-form');
   if (!form) return;
