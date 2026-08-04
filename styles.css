@@ -153,11 +153,11 @@ h1,h2,h3,.eyebrow,.kicker{font-family:'Cinzel',serif}
 /* ===== Tipologías ===== */
 .typo{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:44px}
 .typo__card{background:#fff;border:1px solid var(--linea);border-radius:var(--radius);padding:28px 24px;display:flex;flex-direction:column}
-.typo__card--feat{border-color:var(--olivo);box-shadow:0 10px 30px rgba(122,113,87,.14)}
-.typo__top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--linea);padding-bottom:14px}
-.typo__rec{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:500;color:var(--negro)}
+.typo__card--feat{border-color:var(--linea);box-shadow:none}
+.typo__top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;min-height:56px;border-bottom:1px solid var(--linea);padding-bottom:14px}
+.typo__rec{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:500;color:var(--negro);line-height:1.2}
 .typo__m2{font-size:.92rem;color:var(--olivo);font-weight:600}
-.typo__feat{list-style:none;margin:16px 0;display:grid;gap:7px}
+.typo__feat{list-style:none;margin:16px 0 auto;display:grid;gap:7px}
 .typo__feat li{font-size:.9rem;color:var(--texto-2);padding-left:16px;position:relative}
 .typo__feat li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--olivo)}
 .typo__foot{display:flex;align-items:baseline;gap:8px;margin-top:auto}
@@ -165,7 +165,7 @@ h1,h2,h3,.eyebrow,.kicker{font-family:'Cinzel',serif}
 .typo__price{font-family:'Cinzel',serif;font-size:1.7rem;font-weight:600;color:var(--negro)}
 .typo__price small{font-size:.8rem;font-weight:400;color:var(--texto-2)}
 .typo__roi{font-size:.86rem;color:var(--olivo-d);font-weight:600;margin-top:6px}
-.typo__card .btn{margin-top:18px}
+.typo__card .btn{margin-top:16px;width:100%;padding:12px 10px;font-size:.7rem;letter-spacing:.02em;min-height:40px;white-space:nowrap}
 .typo__pay{margin-top:34px;text-align:center;font-size:1rem;color:var(--texto);background:#fff;border:1px solid var(--linea);border-radius:var(--radius);padding:16px 22px}
 
 /* ===== Desarrollador ===== */
