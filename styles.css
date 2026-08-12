@@ -235,6 +235,9 @@ h1,h2,h3,.eyebrow,.kicker{font-family:'Cinzel',serif}
 .footer__in{text-align:center}
 .footer__logo{height:42px;width:auto;margin:0 auto 20px;filter:brightness(0) invert(1);opacity:.9}
 .footer__addr{font-size:.92rem;margin-bottom:10px}
+.footer__phone{font-size:.95rem;margin-bottom:12px}
+.footer__phone a{color:#ecdfc9;font-weight:500}
+.footer__phone a:hover{text-decoration:underline}
 .footer__legal{font-size:.82rem;color:#8d8378}
 .footer__legal a{text-decoration:underline}
 
