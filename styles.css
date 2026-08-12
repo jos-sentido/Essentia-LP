@@ -286,8 +286,8 @@ body[data-variant="a"] .only-b{display:none!important}
 .caso__seg b{font-family:'Cinzel',serif;font-size:1.15rem;font-weight:600;white-space:nowrap}
 .caso__seg--renta{background:var(--taupe)}
 .caso__seg--plus{background:var(--olivo)}
-.caso__total{margin-top:16px;font-size:1.05rem;color:var(--texto)}
-.caso__total strong{font-family:'Cinzel',serif;color:var(--olivo-d);font-size:1.15rem}
+.caso__total{margin-top:20px;font-size:1.15rem;color:var(--texto)}
+.caso__total strong{font-family:'Cinzel',serif;color:var(--olivo-d);font-size:1.75rem;font-weight:700;line-height:1}
 
 /* Calculadora (B) */
 .calc{margin-top:40px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:8px;padding:clamp(22px,4vw,38px);max-width:680px}
