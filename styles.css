@@ -91,6 +91,9 @@ h1,h2,h3,.eyebrow,.kicker{font-family:'Cinzel',serif}
 .hero__h1{font-size:clamp(2.3rem,7vw,4.6rem);font-weight:500;line-height:1.06;letter-spacing:.01em;text-shadow:0 2px 24px rgba(0,0,0,.55),0 1px 3px rgba(0,0,0,.4)}
 .hero__sub{font-size:clamp(1.02rem,2.4vw,1.3rem);max-width:38ch;margin-top:22px;color:#f2ece2;line-height:1.6;text-shadow:0 1px 14px rgba(0,0,0,.6)}
 .hero__cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.hero__cta-stack{display:inline-flex;flex-direction:column;gap:14px;width:fit-content;max-width:100%}
+.hero__cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.hero__promo{width:100%}
 .hero__cta .btn--outline{color:#fff;border-color:rgba(255,255,255,.6)}
 .hero__cta .btn--outline:hover{background:#fff;color:var(--negro)}
 .hero__micro{margin-top:18px;font-size:.84rem;color:#ddd3c5;letter-spacing:.02em;text-shadow:0 1px 8px rgba(0,0,0,.6)}
