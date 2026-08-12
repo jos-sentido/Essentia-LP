@@ -227,24 +227,40 @@
     <p class="lead">Estas son las tipologías del desarrollo. La disponibilidad y los precios vigentes los confirma un asesor según la unidad que te interese.</p>
     <div class="typo">
       <article class="typo__card">
+        <button type="button" class="typo__plano" data-plano="assets/img/plano-1rec.webp" aria-label="Ver plano de 1 recámara">
+          <img src="assets/img/plano-1rec.webp" alt="Plano de 1 recámara" loading="lazy" />
+          <span class="typo__plano-hint">Ver plano ⤢</span>
+        </button>
         <div class="typo__top"><span class="typo__rec">1 recámara</span><span class="typo__m2">83.81 m²</span></div>
         <ul class="typo__feat"><li>1½ baños</li><li>Sala · Comedor · Cocina</li><li>Cuarto de lavado</li></ul>
         <p class="typo__roi" data-ab="b" hidden>Renta estimada ~$20,950/mes</p>
         <a href="#form" class="btn btn--outline btn--sm" data-cta="typo" data-tipo="1 recámara">Solicitar información</a>
       </article>
       <article class="typo__card">
+        <button type="button" class="typo__plano" data-plano="assets/img/plano-2rec.webp" aria-label="Ver plano de 2 recámaras">
+          <img src="assets/img/plano-2rec.webp" alt="Plano de 2 recámaras" loading="lazy" />
+          <span class="typo__plano-hint">Ver plano ⤢</span>
+        </button>
         <div class="typo__top"><span class="typo__rec">2 recámaras</span><span class="typo__m2">98.00 m²</span></div>
         <ul class="typo__feat"><li>2 baños</li><li>Sala · Comedor · Cocina</li><li>Cuarto de lavado</li></ul>
         <p class="typo__roi" data-ab="b" hidden>Renta estimada ~$21,300/mes</p>
         <a href="#form" class="btn btn--outline btn--sm" data-cta="typo" data-tipo="2 recámaras">Solicitar información</a>
       </article>
       <article class="typo__card typo__card--feat">
+        <button type="button" class="typo__plano" data-plano="assets/img/plano-2rec-amplio.webp" aria-label="Ver plano de 2 recámaras amplio">
+          <img src="assets/img/plano-2rec-amplio.webp" alt="Plano de 2 recámaras amplio" loading="lazy" />
+          <span class="typo__plano-hint">Ver plano ⤢</span>
+        </button>
         <div class="typo__top"><span class="typo__rec">2 recámaras · amplio</span><span class="typo__m2">130.89 m²</span></div>
         <ul class="typo__feat"><li>2 baños</li><li>Sala · Comedor · Cocina</li><li>Cuarto de lavado</li></ul>
         <p class="typo__roi" data-ab="b" hidden>Renta estimada ~$32,700/mes</p>
         <a href="#form" class="btn btn--outline btn--sm" data-cta="typo" data-tipo="2 recámaras">Solicitar información</a>
       </article>
       <article class="typo__card">
+        <button type="button" class="typo__plano" data-plano="assets/img/plano-3rec.webp" aria-label="Ver plano de 3 recámaras">
+          <img src="assets/img/plano-3rec.webp" alt="Plano de 3 recámaras" loading="lazy" />
+          <span class="typo__plano-hint">Ver plano ⤢</span>
+        </button>
         <div class="typo__top"><span class="typo__rec">3 recámaras</span><span class="typo__m2">152.62 m²</span></div>
         <ul class="typo__feat"><li>3 baños</li><li>Sala · Comedor · Cocina</li><li>Cuarto de lavado</li></ul>
         <p class="typo__roi" data-ab="b" hidden>Renta estimada ~$38,000/mes</p>
@@ -267,13 +283,15 @@
     <p class="lead" data-ab="b" hidden>Elige la tipología y compara los tres esquemas. Un asesor confirma disponibilidad y condiciones vigentes.</p>
 
     <div class="cotz">
+      <p class="cotz__step">Selecciona el tipo de depa</p>
       <div class="cotz__tabs" id="cot-tabs" role="tablist"></div>
+      <p class="disclaimer" id="cot-fine"></p>
+      <p class="cotz__step">Compara las tres formas de pago disponibles</p>
       <div class="cotz__schemes" id="cot-schemes"></div>
 
       <p class="cotz__promo">★ <b>Promoción:</b> paga solo <b>$50,000/mes</b> durante la obra; el <b>monto contra entrega</b> lo cierras con tu <b>crédito hipotecario</b> al escriturar.</p>
 
       <a href="#form" class="btn btn--primary cotz__cta" data-cta="cotizador">Solicitar cotización</a>
-      <p class="disclaimer" id="cot-fine"></p>
     </div>
   </div>
 </section>
@@ -397,6 +415,12 @@
 <!-- ░░ STICKY CTA (móvil) ░░ -->
 <a href="#form" class="sticky-cta" data-cta="sticky" data-ab="a">Agenda tu visita</a>
 <a href="#form" class="sticky-cta" data-cta="sticky" data-ab="b" hidden>Calcular mi inversión</a>
+
+<!-- ░░ LIGHTBOX PLANOS ░░ -->
+<div class="planobox" id="planobox" hidden>
+  <button class="planobox__close" id="planobox-close" aria-label="Cerrar">✕</button>
+  <img id="planobox-img" src="" alt="Plano de tipología" />
+</div>
 
 <script src="tracking.js" defer></script>
 <script src="app.js" defer></script>

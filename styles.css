@@ -170,6 +170,15 @@ h1,h2,h3,.eyebrow,.kicker{font-family:'Cinzel',serif}
 .typo__roi{font-size:.86rem;color:var(--olivo-d);font-weight:600;margin-top:6px}
 .typo__card .btn{margin-top:16px;width:100%;padding:12px 10px;font-size:.7rem;letter-spacing:.02em;min-height:40px;white-space:nowrap}
 .typo__pay{margin-top:34px;text-align:center;font-size:1rem;color:var(--texto);background:#fff;border:1px solid var(--linea);border-radius:var(--radius);padding:16px 22px}
+.typo__plano{display:block;width:100%;position:relative;margin-bottom:18px;padding:0;border:1px solid var(--linea);border-radius:var(--radius);background:var(--crema);cursor:pointer;overflow:hidden;transition:border-color .2s var(--ease)}
+.typo__plano:hover{border-color:var(--olivo)}
+.typo__plano img{width:100%;height:150px;object-fit:contain;background:var(--crema);display:block;padding:8px}
+.typo__plano-hint{position:absolute;bottom:8px;right:8px;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(26,22,20,.72);padding:4px 9px;border-radius:999px}
+.typo__plano:focus-visible{outline:3px solid var(--olivo);outline-offset:2px}
+.planobox{position:fixed;inset:0;z-index:200;background:rgba(20,16,14,.9);display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,48px)}
+.planobox img{max-width:100%;max-height:90vh;object-fit:contain;background:var(--crema);border-radius:var(--radius);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.planobox__close{position:absolute;top:18px;right:22px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:1.15rem;cursor:pointer;line-height:1}
+.planobox__close:hover{background:rgba(255,255,255,.26)}
 
 /* ===== Desarrollador ===== */
 .dev{display:grid;gap:40px;align-items:center}
@@ -310,12 +319,12 @@ body[data-variant="a"] .only-b{display:none!important}
 .cotz__tab.is-sel .cotz__tm{color:#e4dcce}
 .cotz__schemes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .cotz__sch{position:relative;border:1px solid var(--linea);background:#fff;border-radius:var(--radius);padding:26px 22px;display:flex;flex-direction:column}
-.cotz__sch--promo{border-color:var(--olivo);background:linear-gradient(180deg,rgba(122,113,87,.10),rgba(122,113,87,.02))}
-.cotz__badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--olivo);color:#fff;font-size:.7rem;font-weight:600;letter-spacing:.06em;padding:5px 14px;border-radius:999px;white-space:nowrap}
+.cotz__sch--promo{border-color:var(--olivo-d);background:linear-gradient(155deg,var(--olivo) 0%,var(--olivo-d) 100%);color:#fff;box-shadow:0 12px 30px rgba(96,88,56,.28)}
+.cotz__badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--crema);color:var(--olivo-d);font-size:.7rem;font-weight:700;letter-spacing:.06em;padding:5px 14px;border-radius:999px;white-space:nowrap;box-shadow:0 3px 10px rgba(0,0,0,.18)}
 .cotz__sn{font-family:'Cinzel',serif;font-size:1.2rem;font-weight:600;text-transform:uppercase;letter-spacing:.02em;color:var(--negro)}
-.cotz__sch--promo .cotz__sn{color:var(--olivo-d)}
+.cotz__sch--promo .cotz__sn{color:#fff}
 .cotz__pbig{font-family:'Cinzel',serif;font-weight:600;font-size:2.3rem;line-height:1;margin-top:10px;color:var(--negro)}
-.cotz__sch--promo .cotz__pbig{color:var(--olivo-d)}
+.cotz__sch--promo .cotz__pbig{color:#fff}
 .cotz__plabel{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--texto-2);margin-top:6px}
 .cotz__kdiv{height:1px;background:var(--linea);margin:18px 0 14px}
 .cotz__rows{display:flex;flex-direction:column;gap:10px}
@@ -323,7 +332,12 @@ body[data-variant="a"] .only-b{display:none!important}
 .cotz__r b{font-weight:600;color:var(--negro)}
 .cotz__r.hot b{color:var(--olivo-d);font-weight:700}
 .cotz__hint{margin-top:12px;font-size:.76rem;color:var(--texto-2);line-height:1.45}
-.cotz__sch--promo .cotz__hint{color:var(--olivo-d)}
+.cotz__sch--promo .cotz__hint{color:rgba(255,255,255,.85)}
+.cotz__sch--promo .cotz__plabel{color:rgba(255,255,255,.72)}
+.cotz__sch--promo .cotz__kdiv{background:rgba(255,255,255,.28)}
+.cotz__sch--promo .cotz__r{color:rgba(255,255,255,.82)}
+.cotz__sch--promo .cotz__r b,.cotz__sch--promo .cotz__r.hot b{color:#fff}
+.cotz__step{font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--texto-2);font-weight:500;margin:0 0 12px}
 .cotz__promo{margin-top:22px;text-align:center;font-size:.92rem;color:var(--texto-2);font-weight:300}
 .cotz__promo b{color:var(--olivo-d);font-weight:600}
 .cotz__cta{width:100%;margin-top:22px}

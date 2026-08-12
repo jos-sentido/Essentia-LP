@@ -138,6 +138,25 @@
     tabs(); cards();
   })();
 
+  // ---- Lightbox de planos ----
+  (function () {
+    var box = document.getElementById('planobox');
+    if (!box) return;
+    var img = document.getElementById('planobox-img');
+    var closeBtn = document.getElementById('planobox-close');
+    function open(src, alt) { img.src = src; img.alt = alt || 'Plano'; box.hidden = false; document.body.style.overflow = 'hidden'; }
+    function close() { box.hidden = true; img.src = ''; document.body.style.overflow = ''; }
+    document.querySelectorAll('.typo__plano').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var im = b.querySelector('img');
+        open(b.getAttribute('data-plano'), im ? im.alt : '');
+      });
+    });
+    box.addEventListener('click', function (e) { if (e.target === box || e.target === closeBtn) close(); });
+    closeBtn.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !box.hidden) close(); });
+  })();
+
   // ---- Formulario multi-paso ----
   var form = document.getElementById('lead-form');
   if (!form) return;
