@@ -76,18 +76,18 @@
     <p class="lead">Ubicado en Country Club, una de las zonas con mayor estabilidad y demanda.</p>
 
     <div class="caso__stats">
-      <div class="caso__stat"><span class="caso__n">12%</span><span class="caso__l">Plusvalía anual proyectada</span></div>
-      <div class="caso__stat"><span class="caso__n">$76 mil<small>/mes</small></span><span class="caso__l">Hasta esta cifra en ingresos por renta de corta estancia</span></div>
-      <div class="caso__stat"><span class="caso__n">26%</span><span class="caso__l">ROI anual estimado + rentas</span></div>
+      <div class="caso__stat"><span class="caso__n">12%</span><span class="caso__l">Plusvalía anual estimada en la zona Country de Guadalajara</span></div>
+      <div class="caso__stat"><span class="caso__n">~5.8%</span><span class="caso__l">Rendimiento bruto anual solo por renta de corta estancia (post-entrega)</span></div>
+      <div class="caso__stat"><span class="caso__n">$391,626<small>/año</small></span><span class="caso__l">Ingreso anual estimado por renta corta · ADR $1,677 · 65% de ocupación</span></div>
     </div>
 
     <div class="caso__return">
       <p class="caso__return-title">Retorno total potencial</p>
       <div class="caso__bar">
-        <span class="caso__seg caso__seg--renta" style="flex:14"><em>Renta</em><b>14%</b></span>
+        <span class="caso__seg caso__seg--renta" style="flex:5.8"><em>Renta</em><b>~5.8%</b></span>
         <span class="caso__seg caso__seg--plus" style="flex:12"><em>Plusvalía</em><b>12%</b></span>
       </div>
-      <p class="caso__total">= <strong>26% anual</strong> combinando renta y plusvalía estimada</p>
+      <p class="caso__total">= <strong>~18% anual</strong> combinando renta de corta estancia y plusvalía estimada</p>
     </div>
     <p class="disclaimer">Cifras estimadas con datos públicos de mercado (jun 2026). No constituyen garantía de rendimiento.</p>
   </div>
@@ -110,7 +110,7 @@
       <li><svg viewBox="0 0 24 24" class="ic"><path d="M12 3c4 4 6 7 6 10a6 6 0 0 1-12 0c0-3 2-6 6-10Z"/></svg>Bosque Colomos / Club Atlas Colomos — áreas verdes</li>
     </ul>
 
-    <div class="zonagal" data-ab="b" hidden>
+    <div class="zonagal">
       <figure class="zonagal__item"><img src="assets/img/zona-country-club.webp?v=2" alt="Guadalajara Country Club" loading="lazy" /><figcaption>Country Club</figcaption></figure>
       <figure class="zonagal__item"><img src="assets/img/zona-financiera.webp?v=2" alt="Zona Financiera de Guadalajara" loading="lazy" /><figcaption>Zona Financiera</figcaption></figure>
       <figure class="zonagal__item"><img src="assets/img/zona-colomos.webp" alt="Bosque Los Colomos" loading="lazy" /><figcaption>Bosque Colomos</figcaption></figure>
@@ -129,7 +129,7 @@
 
     <div class="stats" data-ab="a">
       <div class="stat"><span class="stat__n">12%</span><span class="stat__l">Plusvalía anual proyectada</span></div>
-      <div class="stat"><span class="stat__n">$76 mil<small>/mes</small></span><span class="stat__l">Hasta esta cifra en ingresos por renta de corta estancia</span></div>
+      <div class="stat"><span class="stat__n">~$36 mil<small>/mes</small></span><span class="stat__l">Ingreso estimado por renta de corta estancia</span></div>
       <div class="stat"><span class="stat__n">Top</span><span class="stat__l">Colonia de mayor demanda sostenida en Guadalajara</span></div>
     </div>
     <p class="disclaimer" data-ab="b" hidden>Cifras estimadas con datos públicos de mercado. No constituyen garantía de rendimiento.</p>
@@ -297,7 +297,6 @@
     <div class="cotz">
       <p class="cotz__step">Selecciona el tipo de depa</p>
       <div class="cotz__tabs" id="cot-tabs" role="tablist"></div>
-      <p class="disclaimer" id="cot-fine"></p>
       <p class="cotz__step">Compara las tres formas de pago disponibles</p>
       <div class="cotz__schemes" id="cot-schemes"></div>
 
@@ -342,26 +341,26 @@
       <fieldset class="step is-active" data-step="1">
         <legend class="cform__q">¿Qué buscas en Essentia?</legend>
         <div class="opts" data-field="objetivo">
-          <button type="button" class="opt" data-value="Vivir">Vivir aquí</button>
-          <button type="button" class="opt" data-value="Invertir">Invertir</button>
+          <button type="button" class="opt" data-value="Vivir">Vivir</button>
+          <button type="button" class="opt" data-value="Invertir">Invertir (plusvalía/renta)</button>
           <button type="button" class="opt" data-value="Segunda residencia">Segunda residencia</button>
         </div>
       </fieldset>
 
       <!-- Paso 2 -->
       <fieldset class="step" data-step="2">
-        <legend class="cform__q">¿Qué tamaño te interesa?</legend>
+        <legend class="cform__q">¿Qué tipo de departamento te interesa?</legend>
         <div class="opts" data-field="producto_interes">
           <button type="button" class="opt" data-value="1 recámara">1 recámara</button>
           <button type="button" class="opt" data-value="2 recámaras">2 recámaras</button>
           <button type="button" class="opt" data-value="3 recámaras">3 recámaras</button>
-          <button type="button" class="opt" data-value="Aún no sé">Aún no sé</button>
+          <button type="button" class="opt" data-value="Aún no sé">Aún no lo sé</button>
         </div>
       </fieldset>
 
       <!-- Paso 3 -->
       <fieldset class="step" data-step="3">
-        <legend class="cform__q">¿Para cuándo?</legend>
+        <legend class="cform__q">¿En qué horizonte te gustaría decidir?</legend>
         <div class="opts" data-field="timing">
           <button type="button" class="opt" data-value="Lo antes posible">Lo antes posible</button>
           <button type="button" class="opt" data-value="3-6 meses">En 3–6 meses</button>
@@ -370,11 +369,12 @@
       </fieldset>
 
       <!-- Paso 4: inversión (solo variante B) -->
-      <fieldset class="step" data-step="4" data-only="b">
-        <legend class="cform__q">¿Monto a invertir?</legend>
-        <div class="opts" data-field="monto">
-          <button type="button" class="opt" data-value="<7 MDP">Menos de $7 MDP</button>
-          <button type="button" class="opt" data-value="7-10 MDP">$7–10 MDP</button>
+      <fieldset class="step" data-step="4">
+        <legend class="cform__q">¿Cuál es tu presupuesto aproximado?</legend>
+        <div class="opts" data-field="presupuesto">
+          <button type="button" class="opt" data-value="Hasta 6 MDP">Hasta $6 MDP</button>
+          <button type="button" class="opt" data-value="6-8 MDP">$6–8 MDP</button>
+          <button type="button" class="opt" data-value="8-10 MDP">$8–10 MDP</button>
           <button type="button" class="opt" data-value=">10 MDP">Más de $10 MDP</button>
         </div>
       </fieldset>
@@ -421,6 +421,7 @@
     <img src="assets/img/logo-blanco.png" alt="Essentia Country" class="footer__logo" />
     <p class="footer__addr">Av. Coronel Jorge Álvarez del Castillo 1433, Country Club, 44610 Guadalajara, Jal.</p>
     <p class="footer__phone"><a href="tel:8009533800">Tel. 800 9533 800</a></p>
+    <p class="disclaimer footer__fine" id="cot-fine"></p>
     <p class="footer__legal">Essentia Country by Península Lifestyle Properties · <a href="https://essentiacountry.mx/aviso-de-privacidad/" target="_blank" rel="noopener">Aviso de privacidad</a> · © 2026</p>
   </div>
 </footer>

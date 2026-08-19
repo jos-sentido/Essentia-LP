@@ -244,6 +244,7 @@ h1,h2,h3,.eyebrow,.kicker{font-family:'Cinzel',serif}
 .footer__phone a{color:#ecdfc9;font-weight:500}
 .footer__phone a:hover{text-decoration:underline}
 .footer__legal{font-size:.82rem;color:#8d8378}
+.footer__fine{color:#8d8378;font-size:.76rem;font-style:italic;margin:0 auto 12px;max-width:60ch;opacity:.85}
 .footer__legal a{text-decoration:underline}
 
 /* ===== Sticky CTA móvil ===== */
