@@ -58,7 +58,7 @@ async function toZoho(lead) {
   })();
 
   // Detalle de interés = respuestas del form (labels) separadas por " / ".
-  const detalle = [lead.objetivo, lead.producto_interes, lead.timing, lead.monto].filter(Boolean).join(' / ');
+  const detalle = [lead.objetivo, lead.producto_interes, lead.timing, lead.presupuesto].filter(Boolean).join(' / ');
 
   const body = {
     // ---- llaves CONFIRMADAS por la config del webhook (WordPress → Make) ----
@@ -80,7 +80,7 @@ async function toZoho(lead) {
     // ---- extras nuestros (se ignoran si el webhook no los mapea) ----
     detalleinteres: detalle,               // → Detalle de interés (llave minúsculas)
     objetivo: lead.objetivo, producto_interes: lead.producto_interes,
-    timing: lead.timing, monto: lead.monto, version_lp: lead.variante,
+    timing: lead.timing, presupuesto: lead.presupuesto, version_lp: lead.variante,
     // ---- atribución de campaña (de los UTMs) ----
     campania: lead.utm_campaign,           // → Campaña
     anuncio: lead.utm_content || lead.ad_id, // → Anuncio (nombre del ad)
