@@ -7,7 +7,7 @@
      GHL_TOKEN, GHL_LOCATION_ID           — PIT token REST (header Version: 2021-07-28)
      SHEET_WEBHOOK_URL                    — Apps Script Web App /exec
      META_PIXEL_ID, META_CAPI_TOKEN       — Conversions API
-     ZOHO_WEBHOOK_URL                     — webhook del CRM del cliente (Zoho Flow → Create Lead). Inerte si vacía.
+     ZOHO_WEBHOOK_URL                     — webhook Make compartido de PLP (→ Zoho, esquema fijo). Inerte si vacía.
 */
 const crypto = require('crypto');
 const sha256 = (v) => v ? crypto.createHash('sha256').update(String(v).trim().toLowerCase()).digest('hex') : undefined;
@@ -21,28 +21,72 @@ async function withRetry(fn, n = 3) {
   throw last;
 }
 
-/* ---- 4) Zoho CRM (vía webhook — Zoho Flow) ----
-   NO tocamos la API de Zoho ni pasamos por GHL. PLP expone un webhook (Zoho Flow →
-   Create Lead) y mapea los campos de su lado. Aquí solo mandamos un JSON plano y
-   bien nombrado para que su mapeo sea directo. La URL vive en env (ZOHO_WEBHOOK_URL);
-   si falta, retorna 'skip' y el destino queda inerte (no rompe nada). */
+/* ---- 4) Zoho CRM (vía webhook — Make compartido de PLP) ----
+   PLP ya tiene un webhook en Make que empuja a Zoho con SU esquema fijo (lo alimentan
+   también forms de WordPress de otras propiedades). NO imponemos nombres nuestros:
+   nos adaptamos a SUS llaves exactas (name/mobile/interes/…). Es el MISMO webhook para
+   los 4 desarrollos PLP; la URL vive en env (ZOHO_WEBHOOK_URL). Si falta → 'skip' (inerte).
+   Payload de Essentia es PLANO (lead.nombre, lead.ts…), no anidado. */
 async function toZoho(lead) {
   const url = process.env.ZOHO_WEBHOOK_URL;
   if (!url) return 'skip';
+
+  // WhatsApp del form → llave 'mobile' con lada país (MX 10 díg → +52).
+  const digits = (lead.whatsapp || '').replace(/\D/g, '');
+  const celular = !digits ? undefined
+    : digits.startsWith('52') ? '+' + digits
+    : digits.length === 10 ? '+52' + digits : '+' + digits;
+
+  // Fecha en AAAA-MM-DDTHH:mm:ss-06:00 (hora central de México, sin DST).
+  const fechaMX = (iso) => {
+    const d = new Date(iso || Date.now());
+    const mx = new Date(d.getTime() - 6 * 3600 * 1000);
+    const p = (n) => String(n).padStart(2, '0');
+    return mx.getUTCFullYear() + '-' + p(mx.getUTCMonth() + 1) + '-' + p(mx.getUTCDate())
+      + 'T' + p(mx.getUTCHours()) + ':' + p(mx.getUTCMinutes()) + ':' + p(mx.getUTCSeconds()) + '-06:00';
+  };
+
+  // Plataforma = canal de origen (Facebook / Instagram / Google), derivado del utm_source.
+  const plataformaCanal = (() => {
+    const s = (lead.utm_source || '').toLowerCase();
+    if (/insta|^ig$/.test(s)) return 'Instagram';
+    if (/face|fb|meta/.test(s)) return 'Facebook';
+    if (/google|adwords/.test(s)) return 'Google';
+    if (lead.gclid) return 'Google';
+    if (lead.fbclid) return 'Facebook';
+    return lead.utm_source || '';
+  })();
+
+  // Detalle de interés = respuestas del form (labels) separadas por " / ".
+  const detalle = [lead.objetivo, lead.producto_interes, lead.timing, lead.monto].filter(Boolean).join(' / ');
+
   const body = {
-    // contacto
-    nombre: lead.nombre, email: lead.email, whatsapp: lead.whatsapp,
-    // versión de LP (A/B)
-    version_lp: lead.variante,
-    // respuestas del form conversacional (llaves reales de Essentia)
+    // ---- llaves CONFIRMADAS por la config del webhook (WordPress → Make) ----
+    name: lead.nombre,                     // 'name' alimenta Apellidos (Last Name, requerido) en Zoho; Nombre queda vacío
+    email: lead.email,                     // → Email
+    mobile: celular,                       // → Teléfono/Movil (la llave es 'mobile')
+    interes: 'ESSENTIA COUNTRY',           // → Desarrollo de interés (debe coincidir con la opción del picklist en Zoho)
+    medio: 'Online',
+    medioContacto: 'Formulario',           // → Medio de contacto (texto fijo)
+    formulario: 'LP Essentia ' + (lead.variante || ''), // → Formulario = nombre/versión del form (A/B)
+    submedio: 'Landing Page',
+    agenciaMarketing: 'Sentido',
+    ruletaFuerzaVentas: 'Ambos',
+    companiapropietaria: 'Península',      // → Compañía propietaria (llave real todo minúsculas)
+    tipoLead: 'Compra UP',                 // → Tipo de lead
+    platform: plataformaCanal,             // → Plataforma = canal desde utm_source
+    pagina: 'Essentia Country',            // → Página de origen (llave 'pagina') = nombre de la página de FB
+    creationDate: fechaMX(lead.ts || lead.timestamp),
+    // ---- extras nuestros (se ignoran si el webhook no los mapea) ----
+    detalleinteres: detalle,               // → Detalle de interés (llave minúsculas)
     objetivo: lead.objetivo, producto_interes: lead.producto_interes,
-    timing: lead.timing, monto: lead.monto,
-    // atribución del anuncio (ad_id/adset_id/campaign_id/adgroup_id los inyecta la plataforma vía URL)
-    ad_id: lead.ad_id, ad_name: lead.utm_content, adset_id: lead.adset_id,
-    campaign: lead.utm_campaign, campaign_id: lead.campaign_id, adgroup_id: lead.adgroup_id,
-    utm_source: lead.utm_source, fbclid: lead.fbclid, gclid: lead.gclid,
-    // fecha de conversión (momento del submit) + origen
-    fecha_conversion: lead.ts || lead.timestamp, landing_url: lead.landing_url
+    timing: lead.timing, monto: lead.monto, version_lp: lead.variante,
+    // ---- atribución de campaña (de los UTMs) ----
+    campania: lead.utm_campaign,           // → Campaña
+    anuncio: lead.utm_content || lead.ad_id, // → Anuncio (nombre del ad)
+    conjuntoAnuncios: lead.utm_term || lead.adset_id, // → Conjunto de anuncios
+    adSetId: lead.adset_id,
+    utm_source: lead.utm_source
   };
   return withRetry(async () => {
     const r = await fetch(url, {
