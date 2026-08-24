@@ -102,19 +102,28 @@
     <p class="lead" data-ab="a">Ubicado en Country Club, una de las zonas con mayor estabilidad, plusvalía y demanda. Cerca de la Zona Financiera.</p>
     <p class="lead" data-ab="b" hidden>La ubicación es el primer driver de plusvalía. Essentia está en el corazón del Country, a un paso de la Zona Financiera y los corredores de mayor demanda.</p>
 
-    <ul class="poi">
-      <li><svg viewBox="0 0 24 24" class="ic"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>Guadalajara Country Club — a la vuelta</li>
-      <li><svg viewBox="0 0 24 24" class="ic"><path d="M3 21V8l9-5 9 5v13h-6v-6H9v6H3Z"/></svg>Zona Financiera y corporativa — minutos</li>
-      <li><svg viewBox="0 0 24 24" class="ic"><path d="M4 4h16v4H4V4Zm0 6h16v10H4V10Zm3 3v4h4v-4H7Z"/></svg>Punto Sao Paulo / Midtown — comercio y gastronomía</li>
-      <li><svg viewBox="0 0 24 24" class="ic"><path d="M2 12h4l2-6 4 14 3-9 2 3h5"/></svg>Av. López Mateos y Av. Américas — conectividad total</li>
-      <li><svg viewBox="0 0 24 24" class="ic"><path d="M12 3c4 4 6 7 6 10a6 6 0 0 1-12 0c0-3 2-6 6-10Z"/></svg>Bosque Colomos / Club Atlas Colomos — áreas verdes</li>
-    </ul>
+    <div class="ubic__grid">
+      <ul class="poi">
+        <li><svg viewBox="0 0 24 24" class="ic"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>Guadalajara Country Club — a la vuelta</li>
+        <li><svg viewBox="0 0 24 24" class="ic"><path d="M3 21V8l9-5 9 5v13h-6v-6H9v6H3Z"/></svg>Zona Financiera y corporativa — minutos</li>
+        <li><svg viewBox="0 0 24 24" class="ic"><path d="M4 4h16v4H4V4Zm0 6h16v10H4V10Zm3 3v4h4v-4H7Z"/></svg>Punto Sao Paulo / Midtown — comercio y gastronomía</li>
+        <li><svg viewBox="0 0 24 24" class="ic"><path d="M2 12h4l2-6 4 14 3-9 2 3h5"/></svg>Av. López Mateos y Av. Américas — conectividad total</li>
+        <li><svg viewBox="0 0 24 24" class="ic"><path d="M12 3c4 4 6 7 6 10a6 6 0 0 1-12 0c0-3 2-6 6-10Z"/></svg>Bosque Colomos / Club Atlas Colomos — áreas verdes</li>
+      </ul>
 
-    <div class="zonagal">
-      <figure class="zonagal__item"><img src="assets/img/zona-country-club.webp?v=2" alt="Guadalajara Country Club" loading="lazy" /><figcaption>Country Club</figcaption></figure>
-      <figure class="zonagal__item"><img src="assets/img/zona-financiera.webp?v=2" alt="Zona Financiera de Guadalajara" loading="lazy" /><figcaption>Zona Financiera</figcaption></figure>
-      <figure class="zonagal__item"><img src="assets/img/zona-colomos.webp" alt="Bosque Los Colomos" loading="lazy" /><figcaption>Bosque Colomos</figcaption></figure>
-      <figure class="zonagal__item"><img src="assets/img/zona-midtown.webp?v=2" alt="Midtown Guadalajara" loading="lazy" /><figcaption>Midtown</figcaption></figure>
+      <div class="zonacar" id="zonacar">
+        <div class="zonacar__viewport">
+          <div class="zonacar__track">
+            <figure class="zonacar__slide"><img src="assets/img/zona-country-club.webp?v=2" alt="Guadalajara Country Club" loading="lazy" /><figcaption>Country Club</figcaption></figure>
+            <figure class="zonacar__slide"><img src="assets/img/zona-financiera.webp?v=2" alt="Zona Financiera de Guadalajara" loading="lazy" /><figcaption>Zona Financiera</figcaption></figure>
+            <figure class="zonacar__slide"><img src="assets/img/zona-colomos.webp" alt="Bosque Los Colomos" loading="lazy" /><figcaption>Bosque Colomos</figcaption></figure>
+            <figure class="zonacar__slide"><img src="assets/img/zona-midtown.webp?v=2" alt="Midtown Guadalajara" loading="lazy" /><figcaption>Midtown</figcaption></figure>
+          </div>
+        </div>
+        <button type="button" class="zonacar__nav zonacar__nav--prev" aria-label="Foto anterior">‹</button>
+        <button type="button" class="zonacar__nav zonacar__nav--next" aria-label="Foto siguiente">›</button>
+        <div class="zonacar__dots" aria-hidden="true"></div>
+      </div>
     </div>
 
     <div class="map">
@@ -239,8 +248,8 @@
     <p class="lead">Estas son las tipologías del desarrollo. La disponibilidad y los precios vigentes los confirma un asesor según la unidad que te interese.</p>
     <div class="typo">
       <article class="typo__card">
-        <button type="button" class="typo__plano" data-plano="assets/img/plano-1rec.webp" aria-label="Ver plano de 1 recámara">
-          <img src="assets/img/plano-1rec.webp" alt="Plano de 1 recámara" loading="lazy" />
+        <button type="button" class="typo__plano" data-plano="assets/img/plano-1rec-3d.webp" aria-label="Ver plano de 1 recámara">
+          <img src="assets/img/plano-1rec-3d.webp" alt="Plano de 1 recámara" loading="lazy" />
           <span class="typo__plano-hint">Ver plano ⤢</span>
         </button>
         <div class="typo__top"><span class="typo__rec">1 recámara</span><span class="typo__m2">83.81 m²</span></div>
@@ -249,8 +258,8 @@
         <a href="#form" class="btn btn--outline btn--sm" data-cta="typo" data-tipo="1 recámara">Solicitar información</a>
       </article>
       <article class="typo__card">
-        <button type="button" class="typo__plano" data-plano="assets/img/plano-2rec.webp" aria-label="Ver plano de 2 recámaras">
-          <img src="assets/img/plano-2rec.webp" alt="Plano de 2 recámaras" loading="lazy" />
+        <button type="button" class="typo__plano" data-plano="assets/img/plano-2rec-3d.webp" aria-label="Ver plano de 2 recámaras">
+          <img src="assets/img/plano-2rec-3d.webp" alt="Plano de 2 recámaras" loading="lazy" />
           <span class="typo__plano-hint">Ver plano ⤢</span>
         </button>
         <div class="typo__top"><span class="typo__rec">2 recámaras</span><span class="typo__m2">98.00 m²</span></div>
@@ -259,8 +268,8 @@
         <a href="#form" class="btn btn--outline btn--sm" data-cta="typo" data-tipo="2 recámaras">Solicitar información</a>
       </article>
       <article class="typo__card typo__card--feat">
-        <button type="button" class="typo__plano" data-plano="assets/img/plano-2rec-amplio.webp" aria-label="Ver plano de 2 recámaras amplio">
-          <img src="assets/img/plano-2rec-amplio.webp" alt="Plano de 2 recámaras amplio" loading="lazy" />
+        <button type="button" class="typo__plano" data-plano="assets/img/plano-2rec-amplio-3d.webp" aria-label="Ver plano de 2 recámaras amplio">
+          <img src="assets/img/plano-2rec-amplio-3d.webp" alt="Plano de 2 recámaras amplio" loading="lazy" />
           <span class="typo__plano-hint">Ver plano ⤢</span>
         </button>
         <div class="typo__top"><span class="typo__rec">2 recámaras · amplio</span><span class="typo__m2">130.89 m²</span></div>
@@ -269,8 +278,8 @@
         <a href="#form" class="btn btn--outline btn--sm" data-cta="typo" data-tipo="2 recámaras">Solicitar información</a>
       </article>
       <article class="typo__card">
-        <button type="button" class="typo__plano" data-plano="assets/img/plano-3rec.webp" aria-label="Ver plano de 3 recámaras">
-          <img src="assets/img/plano-3rec.webp" alt="Plano de 3 recámaras" loading="lazy" />
+        <button type="button" class="typo__plano" data-plano="assets/img/plano-3rec-3d.webp" aria-label="Ver plano de 3 recámaras">
+          <img src="assets/img/plano-3rec-3d.webp" alt="Plano de 3 recámaras" loading="lazy" />
           <span class="typo__plano-hint">Ver plano ⤢</span>
         </button>
         <div class="typo__top"><span class="typo__rec">3 recámaras</span><span class="typo__m2">152.62 m²</span></div>
@@ -360,7 +369,7 @@
 
       <!-- Paso 3 -->
       <fieldset class="step" data-step="3">
-        <legend class="cform__q">¿En qué horizonte te gustaría decidir?</legend>
+        <legend class="cform__q">¿Cuál plazo tienes contemplado?</legend>
         <div class="opts" data-field="timing">
           <button type="button" class="opt" data-value="Lo antes posible">Lo antes posible</button>
           <button type="button" class="opt" data-value="3-6 meses">En 3–6 meses</button>

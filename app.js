@@ -138,6 +138,34 @@
     tabs(); cards();
   })();
 
+  // ---- Carrusel de la zona (Ubicación) ----
+  (function () {
+    var car = document.getElementById('zonacar');
+    if (!car) return;
+    var track = car.querySelector('.zonacar__track');
+    var slides = car.querySelectorAll('.zonacar__slide');
+    var dotsWrap = car.querySelector('.zonacar__dots');
+    var n = slides.length, i = 0, timer, dots = [];
+    for (var k = 0; k < n; k++) {
+      (function (k) {
+        var d = document.createElement('button');
+        d.className = 'zonacar__dot' + (k === 0 ? ' is-on' : '');
+        d.setAttribute('aria-label', 'Ir a la foto ' + (k + 1));
+        d.addEventListener('click', function () { go(k); reset(); });
+        dotsWrap.appendChild(d); dots.push(d);
+      })(k);
+    }
+    function go(x) {
+      i = (x + n) % n;
+      track.style.transform = 'translateX(-' + (i * 100) + '%)';
+      dots.forEach(function (d, j) { d.classList.toggle('is-on', j === i); });
+    }
+    function reset() { clearInterval(timer); timer = setInterval(function () { go(i + 1); }, 4500); }
+    car.querySelector('.zonacar__nav--next').addEventListener('click', function () { go(i + 1); reset(); });
+    car.querySelector('.zonacar__nav--prev').addEventListener('click', function () { go(i - 1); reset(); });
+    reset();
+  })();
+
   // ---- Lightbox de planos ----
   (function () {
     var box = document.getElementById('planobox');
