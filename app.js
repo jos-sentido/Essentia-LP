@@ -10,11 +10,16 @@
     }
   });
 
-  // ---- A/B variant (por ruta /a · /b o por ?v=a|b) ----
+  // ---- A/B variant (por host oficial, ruta /a · /b, o ?v=a|b) ----
+  // En producción cada variante vive en su subdominio: cliente.* = A, inversionista.* = B.
+  // El rewrite por host sirve /lp en la raíz sin cambiar la URL del navegador, así que
+  // la variante se decide aquí por hostname (el pathname sigue siendo "/").
   var qv = (new URLSearchParams(location.search).get('v') || '').toLowerCase();
   var path = location.pathname.toLowerCase().replace(/\/+$/, '');
-  var isB = qv === 'b' || path === '/b' || path.endsWith('/b');
-  var variant = isB ? 'b' : 'a';
+  var host = location.hostname.toLowerCase();
+  var isB = qv === 'b' || path === '/b' || path.endsWith('/b') || host.indexOf('inversionista.') === 0;
+  var isA = qv === 'a' || host.indexOf('cliente.') === 0; // A explícita gana a cualquier heurística
+  var variant = isB && !isA ? 'b' : 'a';
   document.body.dataset.variant = variant;
 
   // Mostrar/ocultar bloques data-ab
