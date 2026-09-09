@@ -193,6 +193,26 @@
   // ---- Formulario multi-paso ----
   var form = document.getElementById('lead-form');
   if (!form) return;
+
+  // ---- Anti-spam (blindaje LP+relay: honeypot + time-trap + Turnstile) ----
+  // Site key PÚBLICA del widget "Essentia LP" (Cloudflare Turnstile). El secret vive en Vercel.
+  var TURNSTILE_SITE_KEY = '0x4AAAAAAEuY-LXCRloJsJyR';
+  var startedAt = Date.now();               // time-trap: envíos <3s se descartan en el relay
+  var tsToken = TURNSTILE_SITE_KEY ? '' : 'ok'; // sin site key no bloquea (útil en dev)
+  var tsWidgetId = null;
+  function mountTurnstile() {
+    if (!TURNSTILE_SITE_KEY || tsWidgetId !== null) return;
+    var el = document.getElementById('lfTurnstile');
+    if (!el) return;
+    if (!window.turnstile) { setTimeout(mountTurnstile, 300); return; } // reintenta hasta que cargue api.js
+    tsWidgetId = window.turnstile.render(el, {
+      sitekey: TURNSTILE_SITE_KEY,
+      callback: function (t) { tsToken = t; },
+      'expired-callback': function () { tsToken = ''; },
+      'error-callback': function () { tsToken = ''; }
+    });
+  }
+
   var data = {};
   var steps = Array.prototype.slice.call(form.querySelectorAll('.step'))
     .filter(function (s) { return !s.dataset.only || s.dataset.only === variant; });
@@ -212,6 +232,7 @@
     nextBtn.hidden = last;
     submitBtn.hidden = !last;
     errEl.hidden = true;
+    if (steps[idx].querySelector('#lfTurnstile')) mountTurnstile(); // monta al llegar a contacto
   }
 
   // Selección de opciones (auto-avanza)
@@ -257,13 +278,18 @@
     if (!nombre || !whatsapp || !email) { showErr('Completa tus datos de contacto.'); return; }
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { showErr('Revisa tu email.'); return; }
     if (!form.priv.checked) { showErr('Acepta el aviso de privacidad.'); return; }
+    if (TURNSTILE_SITE_KEY && !tsToken) { showErr('Completa la verificación de seguridad.'); return; }
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Enviando…';
 
     var payload = Object.assign({}, data, {
       nombre: nombre, whatsapp: whatsapp, email: email,
-      variante: variant.toUpperCase()
+      variante: variant.toUpperCase(),
+      consent: true,                                  // el relay revalida consent===true
+      hp: (form.website && form.website.value) || '', // honeypot: debe ir vacío
+      elapsed_ms: Date.now() - startedAt,             // time-trap
+      turnstile_token: tsToken                        // verificado server-side vs siteverify
     });
     // Enriquecer con tracking (definido en tracking.js)
     if (window.EssentiaTracking) {

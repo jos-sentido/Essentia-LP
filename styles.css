@@ -374,3 +374,8 @@ body[data-variant="a"] .only-b{display:none!important}
 .js [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .js [data-reveal].in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.js [data-reveal]{opacity:1!important;transform:none!important}}
+
+/* anti-spam: honeypot oculto + espaciado del widget Turnstile */
+.lf__hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.lf__turnstile{margin-block:var(--s2,12px)}
+.lf__turnstile:empty{margin-block:0}

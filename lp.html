@@ -404,6 +404,10 @@
           <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required />
         </div>
         <label class="check"><input type="checkbox" id="priv" required /> Acepto el <a href="https://essentiacountry.mx/aviso-de-privacidad/" target="_blank" rel="noopener">aviso de privacidad</a>.</label>
+        <!-- Honeypot anti-bot: humano nunca lo llena (oculto) -->
+        <div class="lf__hp" aria-hidden="true"><label for="website">No llenar</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off" /></div>
+        <!-- Verificación humana (Cloudflare Turnstile) -->
+        <div id="lfTurnstile" class="lf__turnstile"></div>
         <p class="cform__err" id="err" role="alert" aria-live="polite" hidden></p>
       </fieldset>
 
@@ -445,7 +449,8 @@
   <img id="planobox-img" src="" alt="Plano de tipología" />
 </div>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="tracking.js" defer></script>
-<script src="app.js" defer></script>
+<script src="app.js?v=antispam" defer></script>
 </body>
 </html>

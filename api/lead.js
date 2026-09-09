@@ -98,8 +98,49 @@ async function toZoho(lead) {
   });
 }
 
+/* ---- Blindaje anti-spam (§ playbook Amancay) ----
+   Toda la seguridad vive aquí (LP + relay), nunca en GHL ni en el form de Meta.
+   El spam se corta ANTES de tocar cualquier destino. */
+
+// Candado de Origin: solo dominios de Essentia (raíz + www + subdominios + vercel + dev).
+// Al agregar un dominio nuevo, actualizar TAMBIÉN los hostnames del widget en Cloudflare.
+const ALLOWED_ORIGINS = [
+  'https://essentiacountry.mx',
+  'https://www.essentiacountry.mx',
+  'https://cliente.essentiacountry.mx',
+  'https://inversionista.essentiacountry.mx',
+  'https://essentia-lp-sigma.vercel.app',
+  'http://localhost:3000'
+];
+
+// Verificación server-side del token de Turnstile contra siteverify.
+// Sin TURNSTILE_SECRET configurado → 'skip' (no bloquea). Token vacío/ inválido → false.
+async function verifyTurnstile(token, ip) {
+  const secret = process.env.TURNSTILE_SECRET;
+  if (!secret) return 'skip';
+  if (!token) return false;
+  try {
+    const body = new URLSearchParams({ secret, response: token });
+    if (ip) body.set('remoteip', ip);
+    const r = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body
+    });
+    const j = await r.json();
+    return j.success === true;
+  } catch { return 'skip'; } // si siteverify no responde, no tiramos un lead legítimo
+}
+
 module.exports = async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  const origin = req.headers.origin;
+  // CORS: reflejar el origin SOLO si está permitido (nunca '*'); origin de navegador no permitido → 403.
+  if (origin) {
+    if (ALLOWED_ORIGINS.includes(origin)) {
+      res.setHeader('Access-Control-Allow-Origin', origin);
+      res.setHeader('Vary', 'Origin');
+    } else {
+      return res.status(403).json({ ok: false, error: 'origin' });
+    }
+  }
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   if (req.method === 'OPTIONS') return res.status(204).end();
@@ -108,6 +149,19 @@ module.exports = async (req, res) => {
   let lead = req.body;
   if (typeof lead === 'string') { try { lead = JSON.parse(lead); } catch { lead = {}; } }
   lead = lead || {};
+
+  // Ante cualquier señal de bot: 200 {ok:true, dropped:<motivo>} y NO se entrega a ningún destino
+  // (no delata el mecanismo al bot; no dispara reintentos de la cola offline del front).
+  const drop = (motivo) => { console.log('[lead] dropped:' + motivo); return res.status(200).json({ ok: true, dropped: motivo }); };
+  const digits = (lead.whatsapp || '').replace(/\D/g, '');
+  if (lead.hp) return drop('hp');                                                      // honeypot lleno
+  if (typeof lead.elapsed_ms === 'number' && lead.elapsed_ms < 3000) return drop('fast'); // time-trap
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(lead.email || '')) return drop('email');       // validación dura
+  if (digits.length < 10) return drop('phone');
+  if (!lead.nombre || String(lead.nombre).trim().length < 2) return drop('name');
+  if (lead.consent !== true) return drop('consent');
+  const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || undefined;
+  if ((await verifyTurnstile(lead.turnstile_token, ip)) === false) return drop('turnstile'); // candado fuerte
 
   const tasks = [];
 
