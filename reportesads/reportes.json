@@ -17,7 +17,7 @@
         { "label": "Leads (form)", "valor": "69" },
         { "label": "CPL", "valor": "$1,062.82" }
       ],
-      "etiquetas": ["Creativo concentrado en un ángulo", "CTR plano ~0.9%", "Sin Audience Network", "Cerrar circuito con CRM", "Pausa deliberada 10–11 sep"]
+      "etiquetas": ["Creativo concentrado en un ángulo", "CTR plano ~0.9%", "Sin Audience Network", "Cruzar leads con Zoho", "Pausa deliberada 10–11 sep"]
     },
     {
       "slug": "reporte-google-2026-09-15",
@@ -45,13 +45,13 @@
       "fecha": "2026-09-15",
       "periodo": "corte 15 sep 2026",
       "estado": "publicado",
-      "resumen": "Lectura conjunta de los dos canales: la causa raíz compartida es la falta de medición (un solo arreglo destraba ambos); Meta evitó el error de redes automáticas que Google no; y la intención premium que Google confirma debe explotarse en Meta con creativo renovado.",
+      "resumen": "Lectura conjunta de los dos canales: ambos optimizan a ciegas de la calidad, que ya existe en Zoho (cliente, cada 15 días) y falta cruzar; Meta evitó el error de redes automáticas que Google no; y la intención premium que Google confirma debe explotarse en Meta con creativo renovado.",
       "kpis": [
-        { "label": "Causa raíz", "valor": "Medición" },
+        { "label": "Palanca #1", "valor": "Cruzar Zoho" },
         { "label": "Inversión total", "valor": "~$103,423" },
         { "label": "Palancas", "valor": "5" }
       ],
-      "etiquetas": ["Causa raíz compartida: medición", "Un trabajo, no dos", "Marca: Meta siembra, Google cosecha (hipótesis)", "Orden de ejecución"]
+      "etiquetas": ["Optimizan a ciegas de la calidad", "Un trabajo, no dos", "Marca: Meta siembra, Google cosecha (hipótesis)", "Orden de ejecución"]
     }
   ]
 }
