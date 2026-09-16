@@ -18,6 +18,40 @@
         { "label": "CPL", "valor": "$1,062.82" }
       ],
       "etiquetas": ["Creativo concentrado en un ángulo", "CTR plano ~0.9%", "Sin Audience Network", "Cerrar circuito con CRM", "Pausa deliberada 10–11 sep"]
+    },
+    {
+      "slug": "reporte-google-2026-09-15",
+      "tipo": "auditoria",
+      "titulo": "Google Ads — calidad del tráfico de búsqueda",
+      "canal": "Google Ads",
+      "cuentaId": "679-576-4599",
+      "fecha": "2026-09-15",
+      "periodo": "21 may – 15 sep 2026",
+      "estado": "publicado",
+      "resumen": "Auditoría base de la campaña de tráfico al sitio oficial (sin medición de conversión). El 55% de los clics vino de Display (baja intención, ya apagado); la búsqueda real rinde CTR 8.26% pero con un solo anuncio de calidad Deficiente y términos fuera de rango. Saldo agotándose y sin entrega reciente.",
+      "kpis": [
+        { "label": "Costo", "valor": "$23,324" },
+        { "label": "Clics", "valor": "3,282" },
+        { "label": "CTR", "valor": "6.48%" }
+      ],
+      "etiquetas": ["Sin medición de conversión", "Display se llevó 55% de clics", "Ad Strength Deficiente", "Términos fuera de rango", "Saldo agotándose"]
+    },
+    {
+      "slug": "cruce-2026-09-15",
+      "tipo": "cruce",
+      "titulo": "Cruce de medios — Meta + Google juntos",
+      "canal": "Cruce de medios",
+      "cuentaId": "Meta + Google",
+      "fecha": "2026-09-15",
+      "periodo": "corte 15 sep 2026",
+      "estado": "publicado",
+      "resumen": "Lectura conjunta de los dos canales: la causa raíz compartida es la falta de medición (un solo arreglo destraba ambos); Meta evitó el error de redes automáticas que Google no; y la intención premium que Google confirma debe explotarse en Meta con creativo renovado.",
+      "kpis": [
+        { "label": "Causa raíz", "valor": "Medición" },
+        { "label": "Inversión total", "valor": "~$103,423" },
+        { "label": "Palancas", "valor": "5" }
+      ],
+      "etiquetas": ["Causa raíz compartida: medición", "Un trabajo, no dos", "Marca: Meta siembra, Google cosecha (hipótesis)", "Orden de ejecución"]
     }
   ]
 }
