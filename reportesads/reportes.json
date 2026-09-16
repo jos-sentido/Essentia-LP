@@ -1,0 +1,23 @@
+{
+  "cuenta": "Essentia Country · Sentido",
+  "actualizado": "2026-09-15",
+  "reportes": [
+    {
+      "slug": "reporte-2026-09-15",
+      "tipo": "auditoria",
+      "titulo": "Meta Ads — rendimiento, creativos e historial",
+      "canal": "Meta Ads",
+      "cuentaId": "act_1158645606406829",
+      "fecha": "2026-09-15",
+      "periodo": "2 jul – 15 sep 2026",
+      "estado": "publicado",
+      "resumen": "Auditoría base de la cuenta Meta (operada desde el 2 jul). CPL de $1,062 sobre 69 leads de formulario nativo; el ángulo de zona domina y el CTR está plano; sin Audience Network. Ambas campañas en pausa deliberada desde el 10–11 sep.",
+      "kpis": [
+        { "label": "Inversión (leads)", "valor": "$73,334" },
+        { "label": "Leads (form)", "valor": "69" },
+        { "label": "CPL", "valor": "$1,062.82" }
+      ],
+      "etiquetas": ["Creativo concentrado en un ángulo", "CTR plano ~0.9%", "Sin Audience Network", "Cerrar circuito con CRM", "Pausa deliberada 10–11 sep"]
+    }
+  ]
+}

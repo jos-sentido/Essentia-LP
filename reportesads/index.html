@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Reportes de pauta · Essentia Country</title>
+<meta name="description" content="Índice interno de reportes de pauta de Essentia Country.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/reportesads/assets/reportes.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar__in">
+    <a class="topbar__brand" href="/reportesads"><span class="topbar__dot"></span>Essentia Country · Reportes</a>
+    <div class="topbar__right">
+      <span class="tag-priv">Uso interno</span>
+      <a class="topbar__link" href="/">Ver landing →</a>
+    </div>
+  </div>
+</header>
+
+<section class="phead">
+  <div class="container">
+    <p class="eyebrow">Panel de control</p>
+    <h1>Reportes de pauta</h1>
+    <div class="phead__meta">
+      <span>Cuenta <b>Essentia Country</b> · Sentido</span>
+      <span>Última actualización <b id="last-upd">—</b></span>
+      <span id="meta-count">—</span>
+    </div>
+  </div>
+</section>
+
+<section class="section container">
+  <div class="kpis" id="summary"></div>
+</section>
+
+<section class="section section--tight container">
+  <div class="toolbar">
+    <div class="field">
+      <label class="sr-only" for="q">Buscar reporte</label>
+      <input id="q" type="search" placeholder="Buscar por título, periodo, hallazgo…" autocomplete="off">
+    </div>
+    <div class="field" style="flex:0 1 190px">
+      <label class="sr-only" for="canal">Filtrar por canal</label>
+      <select id="canal"><option value="">Todos los canales</option></select>
+    </div>
+    <div class="field" style="flex:0 1 190px">
+      <label class="sr-only" for="orden">Ordenar</label>
+      <select id="orden">
+        <option value="fecha-desc">Más reciente primero</option>
+        <option value="fecha-asc">Más antiguo primero</option>
+        <option value="titulo">Título (A–Z)</option>
+      </select>
+    </div>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div class="rcards" id="cards"></div>
+  <div class="empty" id="empty" hidden>Ningún reporte coincide con el filtro.</div>
+</section>
+
+<footer class="foot">
+  <div class="container foot__in">
+    <span>Essentia Country · Sentido — panel interno de reportes de pauta.</span>
+    <span><a href="/">Landing →</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var cards = document.getElementById('cards'),
+      empty = document.getElementById('empty'),
+      countEl = document.getElementById('count'),
+      q = document.getElementById('q'),
+      canalSel = document.getElementById('canal'),
+      ordenSel = document.getElementById('orden');
+  var DATA = [];
+
+  var MESES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  function fechaLarga(iso){
+    var p = iso.split('-');
+    return parseInt(p[2],10) + ' ' + MESES[parseInt(p[1],10)-1] + ' ' + p[0];
+  }
+  function esc(s){
+    return String(s).replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];
+    });
+  }
+
+  function render(){
+    var term = q.value.trim().toLowerCase();
+    var canal = canalSel.value;
+    var list = DATA.filter(function(r){
+      if (canal && r.canal !== canal) return false;
+      if (!term) return true;
+      var hay = [r.titulo, r.periodo, r.resumen, r.canal, r.cuentaId]
+        .concat(r.etiquetas || []).join(' ').toLowerCase();
+      return hay.indexOf(term) !== -1;
+    });
+
+    var o = ordenSel.value;
+    list.sort(function(a,b){
+      if (o === 'titulo') return a.titulo.localeCompare(b.titulo,'es');
+      return o === 'fecha-asc' ? a.fecha.localeCompare(b.fecha) : b.fecha.localeCompare(a.fecha);
+    });
+
+    cards.innerHTML = list.map(function(r){
+      var estado = r.estado === 'publicado'
+        ? '<span class="chip chip--good"><span class="chip__ico">●</span>Publicado</span>'
+        : '<span class="chip chip--warn"><span class="chip__ico">◐</span>Borrador</span>';
+      var kpis = (r.kpis||[]).map(function(k){
+        return '<div class="rcard__k"><div class="rcard__kl">'+esc(k.label)+'</div><div class="rcard__kv">'+esc(k.valor)+'</div></div>';
+      }).join('');
+      var tags = (r.etiquetas||[]).map(function(t){
+        return '<span class="chip chip--neutral">'+esc(t)+'</span>';
+      }).join(' ');
+      return '<a class="rcard" href="/reportesads/'+encodeURIComponent(r.slug)+'">'+
+        '<div class="rcard__top"><div>'+
+          '<div class="rcard__t">'+esc(r.canal)+'</div>'+
+          '<div class="rcard__per">'+esc(r.periodo)+'</div>'+
+        '</div>'+estado+'</div>'+
+        '<p class="rcard__sum">'+esc(r.resumen)+'</p>'+
+        '<div class="rcard__kpis">'+kpis+'</div>'+
+        '<div class="reco__tags">'+tags+'</div>'+
+        '<div class="rcard__foot">'+
+          '<span class="rcard__per">Corte '+fechaLarga(r.fecha)+'</span>'+
+          '<span class="rcard__cta">Abrir reporte →</span>'+
+        '</div></a>';
+    }).join('');
+
+    empty.hidden = list.length > 0;
+    countEl.textContent = list.length + (list.length === 1 ? ' reporte' : ' reportes');
+  }
+
+  function summary(){
+    var canales = {};
+    DATA.forEach(function(r){ canales[r.canal] = (canales[r.canal]||0)+1; });
+    var ultimo = DATA.slice().sort(function(a,b){ return b.fecha.localeCompare(a.fecha); })[0];
+    var tiles = [
+      {l:'Reportes publicados', v:String(DATA.filter(function(r){return r.estado==='publicado';}).length), n:'Total en el archivo: '+DATA.length, accent:true},
+      {l:'Canales cubiertos', v:String(Object.keys(canales).length), n:Object.keys(canales).join(' · ') || '—'},
+      {l:'Último corte', v: ultimo ? fechaLarga(ultimo.fecha) : '—', n: ultimo ? ultimo.periodo : ''},
+      {l:'Cuenta', v:'Essentia Country', n: ultimo ? ultimo.cuentaId : ''}
+    ];
+    document.getElementById('summary').innerHTML = tiles.map(function(t){
+      return '<div class="kpi'+(t.accent?' kpi--accent':'')+'">'+
+        '<div class="kpi__label">'+t.l+'</div>'+
+        '<div class="kpi__val" style="font-size:clamp(1.2rem,2.6vw,1.6rem)">'+esc(t.v)+'</div>'+
+        '<div class="kpi__note">'+esc(t.n)+'</div></div>';
+    }).join('');
+  }
+
+  fetch('/reportesads/reportes.json', {cache:'no-store'})
+    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function(j){
+      DATA = j.reportes || [];
+      document.getElementById('last-upd').textContent = fechaLarga(j.actualizado);
+      document.getElementById('meta-count').textContent = DATA.length + (DATA.length===1?' reporte':' reportes');
+      Object.keys(DATA.reduce(function(a,r){ a[r.canal]=1; return a; },{})).sort().forEach(function(c){
+        var o = document.createElement('option'); o.value = c; o.textContent = c; canalSel.appendChild(o);
+      });
+      summary();
+      render();
+    })
+    .catch(function(){
+      cards.innerHTML = '';
+      empty.hidden = false;
+      empty.textContent = 'No se pudo cargar reportes.json. Revisa que el archivo exista en /reportesads/reportes.json.';
+    });
+
+  [q, canalSel, ordenSel].forEach(function(n){ n.addEventListener('input', render); });
+})();
+</script>
+</body>
+</html>
