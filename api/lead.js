@@ -113,12 +113,14 @@ const ALLOWED_ORIGINS = [
   'http://localhost:3000'
 ];
 
-// Verificación server-side del token de Turnstile contra siteverify.
-// Sin TURNSTILE_SECRET configurado → 'skip' (no bloquea). Token vacío/ inválido → false.
+// Verificación server-side de Turnstile — ADVISORY: NUNCA descarta el lead.
+// Devuelve un ESTADO que se registra (auditoría), no un booleano de bloqueo.
+// Un secret mal casado / token ausente jamás debe perder un lead de un humano real
+// (los bots los cortan honeypot + time-trap + validación dura, sin falsos positivos).
 async function verifyTurnstile(token, ip) {
   const secret = process.env.TURNSTILE_SECRET;
   if (!secret) return 'skip';
-  if (!token) return false;
+  if (!token) return 'no-token';
   try {
     const body = new URLSearchParams({ secret, response: token });
     if (ip) body.set('remoteip', ip);
@@ -126,8 +128,9 @@ async function verifyTurnstile(token, ip) {
       method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body
     });
     const j = await r.json();
-    return j.success === true;
-  } catch { return 'skip'; } // si siteverify no responde, no tiramos un lead legítimo
+    if (j.success === true) return 'ok';
+    return 'failed:' + ((j['error-codes'] || []).join(',') || 'unknown');
+  } catch { return 'error'; }
 }
 
 module.exports = async (req, res) => {
@@ -161,7 +164,9 @@ module.exports = async (req, res) => {
   if (!lead.nombre || String(lead.nombre).trim().length < 2) return drop('name');
   if (lead.consent !== true) return drop('consent');
   const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || undefined;
-  if ((await verifyTurnstile(lead.turnstile_token, ip)) === false) return drop('turnstile'); // candado fuerte
+  // Turnstile ADVISORY: se registra el resultado, NUNCA descarta (evita perder leads por secret mal casado).
+  const turnstile_status = await verifyTurnstile(lead.turnstile_token, ip);
+  lead.turnstile = turnstile_status; // viaja al Sheet (auditoría); NO va al payload del CRM (llaves fijas)
 
   const tasks = [];
 
@@ -224,5 +229,5 @@ module.exports = async (req, res) => {
   console.log('[lead]', lead.email || '(sin email)', JSON.stringify(summary));
 
   // Siempre 200: para perder un lead tendrían que caerse todos los destinos a la vez.
-  return res.status(200).json({ ok: true, destinos: summary });
+  return res.status(200).json({ ok: true, destinos: summary, turnstile: turnstile_status });
 };

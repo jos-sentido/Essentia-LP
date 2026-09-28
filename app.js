@@ -278,7 +278,8 @@
     if (!nombre || !whatsapp || !email) { showErr('Completa tus datos de contacto.'); return; }
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { showErr('Revisa tu email.'); return; }
     if (!form.priv.checked) { showErr('Acepta el aviso de privacidad.'); return; }
-    if (TURNSTILE_SITE_KEY && !tsToken) { showErr('Completa la verificación de seguridad.'); return; }
+    // Turnstile ADVISORY: NO bloqueamos el envío si el widget no dio token (puede no renderear
+    // para un usuario legítimo). El token se manda si existe; el relay lo registra sin descartar.
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Enviando…';
