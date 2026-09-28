@@ -1,7 +1,25 @@
 {
   "cuenta": "Essentia Country · Sentido",
-  "actualizado": "2026-09-15",
+  "actualizado": "2026-09-28",
   "reportes": [
+    {
+      "slug": "corte-meta-2026-09-28",
+      "tipo": "corte",
+      "base": "reporte-2026-09-15",
+      "titulo": "Corte Meta — relanzamiento, audiencia afinada y calidad en Zoho",
+      "canal": "Meta Ads",
+      "cuentaId": "act_1158645606406829",
+      "fecha": "2026-09-28",
+      "periodo": "16–27 sep 2026 (vs 4–15 sep)",
+      "estado": "publicado",
+      "resumen": "Primer corte tras la auditoría base. La campaña se relanzó con la segmentación afinada: 26% menos impresiones, mejor CTR y CPL de $1,424 (+41%). El cruce con Zoho da vuelta a la lectura: el periodo produjo el primer lead perfilado y una cita concretada (del evergreen afinado), contra 0 perfilados del periodo anterior. El gráfico de esquema de pago se llevó el 57% del gasto al peor CPL y ya se pausó.",
+      "kpis": [
+        { "label": "Inversión (leads)", "valor": "$9,968" },
+        { "label": "CPL", "valor": "$1,424" },
+        { "label": "Perfilados · tasa", "valor": "1 · 25%" }
+      ],
+      "etiquetas": ["El lead más caro fue el que sirvió", "1 perfilado vs 0 previo", "CPL +41% (audiencia afinada)", "Evento SUMMIT sin traza en CRM", "Gráfico pausado (57% del gasto)"]
+    },
     {
       "slug": "reporte-2026-09-15",
       "tipo": "auditoria",
