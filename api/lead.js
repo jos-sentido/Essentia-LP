@@ -4,7 +4,7 @@
    Zoho = 4º destino (se añade en Fase 2 — solo leads de LP van a Zoho).
    Todos los destinos son opcionales: si falta su env var, se omite sin romper.
    Variables de entorno (Vercel · Fase 2):
-     GHL_TOKEN, GHL_LOCATION_ID           — PIT token REST (header Version: 2021-07-28)
+     GHL_PIT_TOKEN, GHL_LOCATION_ID       — PIT token REST (header Version: 2021-07-28)
      SHEET_WEBHOOK_URL                    — Apps Script Web App /exec
      META_PIXEL_ID, META_CAPI_TOKEN       — Conversions API
      ZOHO_WEBHOOK_URL                     — webhook Make compartido de PLP (→ Zoho, esquema fijo). Inerte si vacía.
@@ -179,11 +179,11 @@ module.exports = async (req, res) => {
   }
 
   // --- 2) GHL upsert (idempotente por email/teléfono) ---
-  if (process.env.GHL_TOKEN && process.env.GHL_LOCATION_ID) {
+  if (process.env.GHL_PIT_TOKEN && process.env.GHL_LOCATION_ID) {
     tasks.push(fetch('https://services.leadconnectorhq.com/contacts/upsert', {
       method: 'POST',
       headers: {
-        'Authorization': 'Bearer ' + process.env.GHL_TOKEN,
+        'Authorization': 'Bearer ' + process.env.GHL_PIT_TOKEN,
         'Version': '2021-07-28', 'Content-Type': 'application/json'
       },
       body: JSON.stringify({
