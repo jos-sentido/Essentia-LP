@@ -1,7 +1,25 @@
 {
   "cuenta": "Essentia Country · Sentido",
-  "actualizado": "2026-09-28",
+  "actualizado": "2026-09-30",
   "reportes": [
+    {
+      "slug": "cruce-2026-09-30",
+      "tipo": "cruce",
+      "base": "cruce-2026-09-15",
+      "titulo": "Cruce Meta + Google + CRM — últimos 14 días",
+      "canal": "Cruce de medios",
+      "cuentaId": "Meta + Google + Zoho",
+      "fecha": "2026-09-30",
+      "periodo": "16–29 sep 2026 (14 días)",
+      "estado": "publicado",
+      "resumen": "Cruce de los tres canales en el mismo periodo. El hallazgo dominante es de medición: Meta generó 10 leads de formulario pero solo 4 llegan al CRM (el form de SUMMIT no está conectado), y Google mandó 587 clics con 0 conversiones en su panel pero ~6 leads de 'Sitio web' en Zoho. Se invirtieron $28,685 para 1 perfilado medible (de Meta). Tapar el tracking es la palanca #1.",
+      "kpis": [
+        { "label": "Inversión (14 d)", "valor": "$28,685" },
+        { "label": "Leads en CRM", "valor": "11" },
+        { "label": "Perfilados", "valor": "1" }
+      ],
+      "etiquetas": ["Los dos canales miden mal", "Meta: 6 de 10 no llegan al CRM", "Google: 0 conv pero 6 leads en Zoho", "La calidad hoy la trae Meta", "Tracking = palanca #1"]
+    },
     {
       "slug": "corte-meta-2026-09-28",
       "tipo": "corte",
