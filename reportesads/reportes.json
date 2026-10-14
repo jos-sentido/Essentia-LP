@@ -1,7 +1,43 @@
 {
   "cuenta": "Essentia Country · Sentido",
-  "actualizado": "2026-09-30",
+  "actualizado": "2026-10-14",
   "reportes": [
+    {
+      "slug": "corte-meta-2026-10-14-14d",
+      "tipo": "corte",
+      "base": "reporte-2026-09-15",
+      "titulo": "Corte Meta · 14 días — más leads, menos gasto… y 0 perfilados de Meta",
+      "canal": "Meta Ads",
+      "cuentaId": "act_1158645606406829",
+      "fecha": "2026-10-14",
+      "periodo": "30 sep – 13 oct 2026 (vs 16–29 sep)",
+      "estado": "publicado",
+      "resumen": "Corte de 14 días. La foto de volumen y costo mejora en todo: −42% de gasto, +50% de leads y CPL de $792 (−62%), tras apagar el evento SUMMIT y recaer la generación en el reel de formulario afinado y la Landing Page. El CRM da vuelta a la lectura: de los 13 prospectos de Meta, 0 perfilaron; el único perfilado de Essentia en la quincena entró por Google (sitio web). Caveat honesto: 10 de 11 leads de forma son del 9–13 oct, aún maduran.",
+      "kpis": [
+        { "label": "Inversión (leads)", "valor": "$11,886" },
+        { "label": "CPL · leads", "valor": "$792 · 15" },
+        { "label": "Perfilados Meta · dev", "valor": "0 · 1 (Google)" }
+      ],
+      "etiquetas": ["CPL −62% (sin SUMMIT)", "Meta perfiló 0 en 14 días", "El perfilado fue de Google", "Toda la generación en 1 reel", "Leads nuevos: medir el próximo corte"]
+    },
+    {
+      "slug": "corte-meta-2026-10-14-7d",
+      "tipo": "corte",
+      "base": "reporte-2026-09-15",
+      "titulo": "Corte Meta · 7 días — el formulario revivió, la calidad no (aún)",
+      "canal": "Meta Ads",
+      "cuentaId": "act_1158645606406829",
+      "fecha": "2026-10-14",
+      "periodo": "7–13 oct 2026 (vs 30 sep–6 oct)",
+      "estado": "publicado",
+      "resumen": "Corte corto de 7 días. El conjunto de formularios (AllOn) tenía el vuelo vencido desde el 30 sep; se reactivó el 8 oct con el presupuesto ya subido y el gasto saltó de ~$250/día a ~$1,500/día: 10 leads de forma a $781, todos del reel de esquema de pago. Pero en el CRM, los 10 prospectos de Meta del periodo perfilan 0 — leads recién nacidos, aún sin calificar. Muestra muy pequeña; la lectura firme es el corte de 14 días.",
+      "kpis": [
+        { "label": "Inversión (leads)", "valor": "$9,637" },
+        { "label": "CPL · leads", "valor": "$876 · 11" },
+        { "label": "Perfilados Meta · tasa", "valor": "0 · 0%" }
+      ],
+      "etiquetas": ["Formulario reactivado el 8 oct", "Gasto +328% (recuperación)", "0 perfilados de Meta (aún)", "Todo cuelga de 1 reel", "Muestra chica: dirección, no ley"]
+    },
     {
       "slug": "cruce-2026-09-30",
       "tipo": "cruce",
