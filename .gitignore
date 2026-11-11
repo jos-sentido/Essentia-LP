@@ -1,7 +1,21 @@
-node_modules/
-.vercel
-.DS_Store
-*.log
-_preview_server.cjs
+# ── Único secreto: nunca commitear ──────────────────────────────
 .env
-.env.local
+.env.*
+!.env.example
+
+# ── Build / dependencias ────────────────────────────────────────
+node_modules/
+.next/
+.vercel/
+dist/
+.DS_Store
+
+# Nota: el repo es PRIVADO, por eso insumos/ contexto/ reportes/ SÍ se
+# versionan. Lo único confidencial de verdad (PIT token) vive en .env.local.
+
+# ── Media cruda pesada (1.3 GB de fotos y video; vive en Drive/disco, no en el repo) ──
+insumos/fotos-videos/
+
+# ── Config local del agente ──
+.claude/
+landing/.claude/
